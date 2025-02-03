@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import "./CardButton.css";
 const PremiumCard = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const {

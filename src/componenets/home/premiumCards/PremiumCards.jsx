@@ -13,7 +13,7 @@ const PremiumCards = () => {
       .then((data) => setBioData(data));
   }, []);
   return (
-    <div className="bg-black pt-28">
+    <div className="bg-black pt-28 pb-20">
       <SectionTitle
         heading="✨ Love Begins with Premium!"
         subHeading="Elevate your search with high-quality, serious relationship seekers"

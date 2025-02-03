@@ -46,6 +46,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {/* divider */}
       <div className="border-b-2 border-black"></div>
       <div>
         <p>
