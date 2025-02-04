@@ -11,7 +11,7 @@ const SuccessCounter = () => {
   const [counter, setCounter] = useState(false);
 
   return (
-    <div className="w-10/12 mx-auto pt-44 pb-20">
+    <div className="w-10/12 mx-auto pt-44">
       <SectionTitle
         heading="Building Families"
         subHeading="Discover the numbers behind our trusted matrimony platform"
