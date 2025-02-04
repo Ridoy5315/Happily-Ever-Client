@@ -7,9 +7,11 @@ import find from "./jsonFiles/find.json";
 import profile from "./jsonFiles/profile.json";
 import meet from "./jsonFiles/meet.json";
 import married from "./jsonFiles/married.json";
+import flower from '../../../assets/flower/f1-removebg-preview.png'
 const HowItWorks = () => {
   return (
-    <div className="pt-28 w-10/12 mx-auto">
+    <div className=" relative pt-28 w-10/12 mx-auto">
+      <img className="absolute -top-1 left-1/2 transform -translate-x-1/2" src={flower} alt="" />
       <SectionTitle
         heading="How It Works"
         subHeading="Your Path to Love Starts Here – Easy, Secure, and Trusted"

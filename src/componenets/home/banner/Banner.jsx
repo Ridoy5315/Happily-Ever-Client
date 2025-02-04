@@ -25,7 +25,7 @@ const Banner = () => {
     setZoomKey((prev) => prev + 1);
   }, [currentSlide]); // Run effect every slide change
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full z-10">
       <Swiper
         spaceBetween={30}
         enteredSlides={true}
