@@ -39,7 +39,7 @@ const SuccessStory = () => {
         heading="Happy Beginnings"
         subHeading="Inspiring tales of lifelong partnerships"
       ></SectionTitle>
-      <div className="">
+      <div className="overflow-hidden">
         <>
           {/*<!-- Component: Testimonial carousel --> */}
           <div className="glide-08 relative w-full">

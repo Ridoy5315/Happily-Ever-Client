@@ -11,10 +11,10 @@ const Navbar = () => {
     <nav>
       <ul className="flex lg:flex-row md:flex-row flex-col justify-center items-center gap-6 text-gray-600">
         <li>
-          <NavLink className='menu relative font-semibold'>Home</NavLink>
+          <NavLink to='/' className='menu relative font-semibold'>Home</NavLink>
         </li>
         <li>
-          <NavLink className='menu relative font-semibold'>Trainer</NavLink>
+          <NavLink to='bioData' className='menu relative font-semibold'>Biodatas</NavLink>
         </li>
         <li>
           <NavLink className='menu relative font-semibold'>About Us</NavLink>
