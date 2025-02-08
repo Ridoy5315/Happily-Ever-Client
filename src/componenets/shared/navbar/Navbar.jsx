@@ -52,7 +52,7 @@ const Navbar = () => {
       {/* button section */}
       <div className="hidden lg:block md:block">
         <button className="text-2xl hover:bg-red-500 hover:text-white rounded-full p-2 duration-300">Login</button>
-        <button className="text-2xl hover:bg-red-500 hover:text-white rounded-full p-2 duration-300">Registration</button>
+        <NavLink to='signUp' className="text-2xl hover:bg-red-500 hover:text-white rounded-full p-2 duration-300">Registration</NavLink>
       </div>
       {/* responsive menu icon section */}
       <div className="lg:hidden md:hidden" onClick={() => setOpen(!open)}>

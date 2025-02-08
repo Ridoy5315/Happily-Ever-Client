@@ -29,7 +29,7 @@ const LeftSide = () => {
       {/* age */}
       <div>
         <div className="sm:col-span-3">
-          <label className="block font-medium text-gray-900">Age</label>
+          <label className="block font-medium text-gray-900">Expected Age</label>
           <div className="mt-2 grid grid-cols-7">
             <input
               type="number"
