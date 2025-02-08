@@ -51,7 +51,7 @@ const Navbar = () => {
       </div>
       {/* button section */}
       <div className="hidden lg:block md:block">
-        <button className="text-2xl hover:bg-red-500 hover:text-white rounded-full p-2 duration-300">Login</button>
+        <NavLink to='logIn' className="text-2xl hover:bg-red-500 hover:text-white rounded-full p-2 duration-300">Login</NavLink>
         <NavLink to='signUp' className="text-2xl hover:bg-red-500 hover:text-white rounded-full p-2 duration-300">Registration</NavLink>
       </div>
       {/* responsive menu icon section */}
