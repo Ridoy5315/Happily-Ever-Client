@@ -60,10 +60,13 @@ const Navbar = () => {
         {/* button section */}
         <div className="hidden lg:block md:block">
           {user ? (
-            <>
-            <p>{user?.email}</p>
-            <button onClick={handleLogOut}>Logout</button>
-            </>
+            <div className="flex justify-center items-center gap-2">
+              <p>{user?.email}</p>
+              <div className="w-12 h-12 rounded-full">
+                <img className="h-full w-full rounded-full" src={user?.photoURL} alt="" />
+              </div>
+              <button onClick={handleLogOut}>Logout</button>
+            </div>
           ) : (
             <>
               <NavLink

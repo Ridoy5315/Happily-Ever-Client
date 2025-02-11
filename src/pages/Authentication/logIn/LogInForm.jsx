@@ -8,44 +8,43 @@ import {
 } from "react-simple-captcha";
 import useAuth from "../../../hooks/useAuth";
 import SocialLogin from "../../../componenets/SocialLogin/SocialLogin";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 const LogInForm = () => {
-     const [isCaptchaValid, setIsCaptchaValid] = useState(false);
-     const [wrongValidate, setWrongValidate] = useState("");
-     const {signIn} = useAuth();
-     const navigate = useNavigate();
-     const location = useLocation();
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const [wrongValidate, setWrongValidate] = useState("");
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
 
-     const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || "/";
 
-     useEffect(() => {
-          loadCaptchaEnginge(6);
-     }, [])
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
 
-     //handle login
-     const handleLogin = (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const email = form.email.value;
-      const password = form.password.value;
+  //handle login
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-      signIn(email, password)
-      .then(result => {
-        const user = result.user;
-        console.log(user);
-        navigate(from, {replace: true});
-      })
-     }
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+    });
+  };
 
-     const handleValidateCaptcha = (e) => {
-          const user_captcha_value = e.target.value;
-          if(validateCaptcha(user_captcha_value)){
-               setIsCaptchaValid(true)
-          }
-          else{
-            setWrongValidate("Please write the correct code");
-          }
-     }
-
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setIsCaptchaValid(true);
+    } else {
+      setWrongValidate("Please write the correct code");
+    }
+  };
 
   return (
     <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl">
@@ -72,7 +71,10 @@ const LogInForm = () => {
           </h2>
           <p className=" text-sm/6 text-gray-500">
             Don’t have an account?{" "}
-            <Link to='/signUp' className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link
+              to="/signUp"
+              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            >
               Sign Up Now
             </Link>
           </p>
@@ -100,14 +102,24 @@ const LogInForm = () => {
                 Password
               </label>
 
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <input
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
                   placeholder="******"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-[10px]"
+                >
+                  {showPassword ? (
+                    <FaRegEyeSlash></FaRegEyeSlash>
+                  ) : (
+                    <FaRegEye></FaRegEye>
+                  )}
+                </span>
                 <div className="text-sm mt-1">
                   <Link className=" font-semibold text-indigo-600 hover:text-indigo-500">
                     Forgot password?
@@ -118,30 +130,32 @@ const LogInForm = () => {
             {/* Captcha */}
             <div>
               <label className="block text-sm/6 font-medium text-gray-900">
-              <LoadCanvasTemplate />
+                <LoadCanvasTemplate />
               </label>
 
               <div className="mt-2">
                 <input
-                onBlur={handleValidateCaptcha}
+                  onBlur={handleValidateCaptcha}
                   name="captcha"
                   type="text"
-                  
                   required
                   placeholder="type the captcha above"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
                 {/* <button onClick={handleValidateCaptcha}>Validate</button> */}
-                
               </div>
               <p className="text-xs text-red-500">{wrongValidate}</p>
             </div>
 
             <div>
-              <button 
-              disabled={!isCaptchaValid}
+              <button
+                disabled={!isCaptchaValid}
                 type="submit"
-                className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${isCaptchaValid ? 'bg-indigo-600 hover:bg-indigo-500' : 'bg-gray-400 hover:bg-gray-500 cursor-not-allowed'}`}
+                className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
+                  isCaptchaValid
+                    ? "bg-indigo-600 hover:bg-indigo-500"
+                    : "bg-gray-400 hover:bg-gray-500 cursor-not-allowed"
+                }`}
               >
                 Log In
               </button>

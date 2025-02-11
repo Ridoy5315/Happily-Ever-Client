@@ -8,6 +8,8 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import SocialLogin from "../../../componenets/SocialLogin/SocialLogin";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { imageUpload } from "../../../api/utils";
 //isolate
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -16,6 +18,7 @@ const SignUpForm = () => {
   const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useAuth();
   const [agreed, setAgreed] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   // const [alertText, setAlertText] = useState('');
   // if(!agreed){
@@ -30,24 +33,22 @@ const SignUpForm = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
+    
+    const imageFile = data.image[0] ;
+    
     //image upload to imgbb and then get an url
-    const imageFile = { image: data.image[0] };
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
-    if (res.data.success) {
+    const imageInfo = await imageUpload(imageFile)
+    if (imageInfo.success) {
       //now send the user data for update profile
       const userInfo = {
         name: data.name,
         email: data.email,
-        image: res.data.data.display_url,
+        image: imageInfo.data.display_url,
       };
       createUser(data.email, data.password).then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        updateUserProfile(data.name, res.data.data.display_url).then(() => {
+        updateUserProfile(data.name, imageInfo.data.display_url).then(() => {
           //create user entry in the database
           axiosPublic.post("/user", userInfo)
           .then(res => {
@@ -62,7 +63,7 @@ const SignUpForm = () => {
             }
           })
           reset();
-          Navigate('/');
+          navigate('/');
         })
         .catch(error => {
           console.log(error);
@@ -160,9 +161,9 @@ const SignUpForm = () => {
                 Password
               </label>
 
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
                   placeholder="******"
                   {...register("password", {
@@ -172,6 +173,7 @@ const SignUpForm = () => {
                   })}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                <span onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-[10px]">{showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}</span>
                 {errors.password?.type === "required" && (
                   <span className="text-red-500">Password is required</span>
                 )}
