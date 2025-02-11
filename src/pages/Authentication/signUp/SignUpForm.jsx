@@ -1,13 +1,77 @@
 import React from "react";
 import { useState } from "react";
 import { Field, Label, Switch } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cartonPhoto from "../../../assets/marriedSignUp.jpg";
+import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import SocialLogin from "../../../componenets/SocialLogin/SocialLogin";
 //isolate
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SignUpForm = () => {
+  const axiosPublic = useAxiosPublic();
+  const { createUser, updateUserProfile } = useAuth();
   const [agreed, setAgreed] = useState(false);
+  const navigate = useNavigate();
+  // const [alertText, setAlertText] = useState('');
+  // if(!agreed){
+  //   return setAlertText('you have to agree')
+  // }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    //image upload to imgbb and then get an url
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      //now send the user data for update profile
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        image: res.data.data.display_url,
+      };
+      createUser(data.email, data.password).then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, res.data.data.display_url).then(() => {
+          //create user entry in the database
+          axiosPublic.post("/user", userInfo)
+          .then(res => {
+            if(res.data.insertedId){
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          })
+          reset();
+          Navigate('/');
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      });
+    }
+  };
+
   return (
-    
     <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl">
       <div className="bg-gold2-color px-16 py-12 space-y-10 rounded-l-xl">
         <div className="text-maroon-color">
@@ -32,7 +96,7 @@ const SignUpForm = () => {
           </h2>
           <p className=" text-sm/6 text-gray-500">
             Have an account?{" "}
-            <Link className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link to='/logIn' className="font-semibold text-indigo-600 hover:text-indigo-500">
               Log in
             </Link>
             <span> to continue</span>
@@ -40,19 +104,21 @@ const SignUpForm = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label className="block text-sm/6 font-medium text-gray-900">
                 Full Name
               </label>
               <div className="mt-2">
                 <input
-                  name="name"
                   type="text"
-                  required
                   placeholder="Enter Your Name Here"
+                  {...register("name", { required: true })}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.name && (
+                  <span className="text-red-500">Name is required</span>
+                )}
               </div>
             </div>
             <div>
@@ -61,12 +127,14 @@ const SignUpForm = () => {
               </label>
               <div className="mt-2">
                 <input
-                  name="email"
                   type="email"
-                  required
                   placeholder="Enter Your Email Here"
+                  {...register("email", { required: true })}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.email && (
+                  <span className="text-red-500">Email is required</span>
+                )}
               </div>
             </div>
             <div>
@@ -75,12 +143,15 @@ const SignUpForm = () => {
               </label>
               <div className="mt-2">
                 <input
-                  name="image"
                   type="file"
                   accept="image/*"
                   required
+                  {...register("image")}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.image && (
+                  <span className="text-red-500">Image is required</span>
+                )}
               </div>
             </div>
 
@@ -91,14 +162,30 @@ const SignUpForm = () => {
 
               <div className="mt-2">
                 <input
-                  id="password"
-                  name="password"
                   type="password"
                   required
                   placeholder="******"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                  })}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
-                
+                {errors.password?.type === "required" && (
+                  <span className="text-red-500">Password is required</span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span className="text-red-500">
+                    Password must be 6 character
+                  </span>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <span className="text-red-500 text-xs">
+                    Password must have one upper case, one lower case, one
+                    number and one special character
+                  </span>
+                )}
               </div>
             </div>
             <Field className="flex gap-x-4 sm:col-span-2">
@@ -122,17 +209,19 @@ const SignUpForm = () => {
                 </a>
                 .
               </Label>
+              {/* {errors.exampleRequired && <span>This field is required</span>} */}
+              {/* <p>{alertText}</p> */}
             </Field>
 
             <div>
-              <button
-                type="submit"
+              <input
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign Up
-              </button>
+                type="submit"
+                value="Sign Up"
+              />
             </div>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

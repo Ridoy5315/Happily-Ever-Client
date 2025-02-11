@@ -1,6 +1,7 @@
 import React from "react";
-
-const CardForRightSide = ({ data }) => {
+import "../home/premiumCards/PremiumCard.css";
+import { Link } from "react-router-dom";
+const CardForRightSide = ({ biodata }) => {
   const {
     bioDataId,
     bioDataType,
@@ -8,7 +9,8 @@ const CardForRightSide = ({ data }) => {
     permanentDivisionName,
     age,
     occupation,
-  } = data || {};
+    status,
+  } = biodata || {};
   return (
     <div className="rounded-xl relative">
       <div className="bg-gold-color h-28"></div>
@@ -16,6 +18,7 @@ const CardForRightSide = ({ data }) => {
       <span className="absolute -left-2 -top-2 inline-flex items-center justify-center gap-1 rounded-full bg-maroon-color px-2 text-white ring-2 ring-white">
         {bioDataId}
       </span>
+
       <div className="w-36 h-36 ring-8 ring-gold2-color rounded-full absolute left-1/2 top-1/4 transform -translate-x-1/2 -translate-y-1/3">
         <img
           src={profileImage}
@@ -23,6 +26,16 @@ const CardForRightSide = ({ data }) => {
           className="w-full h-full rounded-full object-cover"
         />
       </div>
+      {status === "premium" && (
+        <div className="inline-flex">
+          <div className="animate-border-gradient">
+            <p className="z-10 text-maroon-color px-6 text-sm uppercase py-0.5 font-medium">
+              {status}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* biodata details */}
       <div className="mt-24">
         <div className="text-center pt-4">
@@ -47,7 +60,7 @@ const CardForRightSide = ({ data }) => {
         </div>
         {/* view profile button */}
         <div className="bg-maroon-color text-whit flex justify-center py-2 rounded">
-          <button className="text-white">View Profile</button>
+          <Link to='biodataDetails' className="text-white">View Profile</Link>
         </div>
       </div>
     </div>

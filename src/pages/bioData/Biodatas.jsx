@@ -2,7 +2,7 @@ import React from 'react';
 import LeftSide from '../../componenets/bioData/LeftSide';
 import RightSide from '../../componenets/bioData/RightSide';
 
-const BioData = () => {
+const Biodatas = () => {
      
      return (
           <div className='mt-10 grid grid-cols-4 min-h-screen'>
@@ -16,4 +16,4 @@ const BioData = () => {
      );
 };
 
-export default BioData;
+export default Biodatas;

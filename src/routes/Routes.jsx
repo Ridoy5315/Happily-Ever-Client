@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/home/Home";
-import BioData from "../pages/bioData/BioData";
 import SignUp from "../pages/Authentication/signUp/SignUp";
 import LogIn from "../pages/Authentication/logIn/LogIn";
-
+import Biodatas from "../pages/bioData/BioDatas";
+import BiodataDetails from "../pages/biodataDetails/BiodataDetails";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -13,20 +14,28 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
-        path: 'bioData',
-        element: <BioData></BioData>
+        path: "/biodatas",
+        element: (
+          <PrivateRoute>
+            <Biodatas></Biodatas>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'signUp',
-        element: <SignUp></SignUp>
+        path: "signUp",
+        element: <SignUp></SignUp>,
       },
       {
-        path: 'logIn',
-        element: <LogIn></LogIn>
-      }
-    ]
+        path: "/logIn",
+        element: <LogIn></LogIn>,
+      },
+      {
+        path: "/biodataDetails",
+        element: <BiodataDetails></BiodataDetails>,
+      },
+    ],
   },
 ]);

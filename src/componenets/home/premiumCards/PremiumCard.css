@@ -1,0 +1,67 @@
+/* .box::after {
+     content: '';
+     position: absolute;
+     inset: -5px;
+     background: conic-gradient(from 0deg, #d11149, #e68aff, #ff4800, #11ebff, #cdff58, #d11149);
+     z-index: -1;
+
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer utilities {
+  @keyframes border-gradient {
+    0% {
+      border-image-source: linear-gradient(45deg, #ff0000, #ff7300);
+    }
+    50% {
+      border-image-source: linear-gradient(45deg, #ff7300, #ffeb00);
+    }
+    100% {
+      border-image-source: linear-gradient(45deg, #ff0000, #ff7300);
+    }
+  }
+
+  .animate-border-gradient {
+    border-width: 3px;
+    border-image-slice: 10;
+    border-radius: 10px;
+    animation: border-gradient 3s infinite linear;
+    
+  }
+} */
+ .animate-border-gradient{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+ }
+ .animate-border-gradient::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 480%;
+  background: linear-gradient(#800000, #ac5b4f, #d3a098);
+  animation: rotate 3s linear infinite;
+ }
+
+ .animate-border-gradient::after{
+  content: '';
+  position: absolute;
+  background: #F7E7CE;
+  inset: 2px;
+  border-radius: 16px;
+ }
+ @keyframes rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+  
+ }

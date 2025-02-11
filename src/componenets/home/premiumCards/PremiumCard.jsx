@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { motion } from "framer-motion";
-const PremiumCard = ({ item }) => {
+import { Link } from "react-router-dom";
+import "./PremiumCard.css";
+const PremiumCard = ({ biodata }) => {
   const [isHovered, setIsHovered] = useState(false);
   const {
     bioDataId,
@@ -11,7 +12,8 @@ const PremiumCard = ({ item }) => {
     age,
     occupation,
     name,
-  } = item || {};
+    status,
+  } = biodata || {};
   return (
     <div
       className={`bg-gold2-color relative rounded-2xl p-6 space-y-6 transform transition-all hover:ring-[8px] hover:ring-gold-color hover:ring-opacity-50 ease-in-out duration-500 hover:scale-105 cursor-pointer `}
@@ -35,13 +37,16 @@ const PremiumCard = ({ item }) => {
           <p>ID: {bioDataId}</p>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col items-center">
         <div className="relative  mx-auto w-56 h-56 rounded-full">
           <img
             src={profileImage}
             alt="Premium member profile"
             className="w-full h-full rounded-full object-cover mx-auto"
           />
+        </div>
+        <div className=" animate-border-gradient mt-3">
+          <p className="z-10 text-maroon-color px-6 text-sm uppercase py-0.5 font-medium">{status}</p>
         </div>
       </div>
       <div className="flex justify-between">
@@ -50,7 +55,7 @@ const PremiumCard = ({ item }) => {
           <p>Address: {permanentDivisionName}</p>
         </div>
         <div className="mt-3">
-          <button
+          <Link to='biodataDetails'
             className={`absolute bottom-7 right-6 px-4 py-1 bg-maroon-color text-white rounded-lg transition-all duration-500 ${
               isHovered
                 ? "opacity-100 -translate-x-0 "
@@ -58,7 +63,7 @@ const PremiumCard = ({ item }) => {
             }`}
           >
             View Profile
-          </button>
+          </Link>
         </div>
       </div>
     </div>

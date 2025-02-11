@@ -1,28 +1,52 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cartonPhoto from "../../../assets/marriedSignUp.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
+import useAuth from "../../../hooks/useAuth";
+import SocialLogin from "../../../componenets/SocialLogin/SocialLogin";
 const LogInForm = () => {
-     const captchaRef = useRef(null);
      const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+     const [wrongValidate, setWrongValidate] = useState("");
+     const {signIn} = useAuth();
+     const navigate = useNavigate();
+     const location = useLocation();
+
+     const from = location.state?.from?.pathname || '/';
+
      useEffect(() => {
           loadCaptchaEnginge(6);
      }, [])
 
-     const handleValidateCaptcha = () => {
-          const user_captcha_value = captchaRef.current.value;
+     //handle login
+     const handleLogin = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      signIn(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, {replace: true});
+      })
+     }
+
+     const handleValidateCaptcha = (e) => {
+          const user_captcha_value = e.target.value;
           if(validateCaptcha(user_captcha_value)){
                setIsCaptchaValid(true)
           }
           else{
-               setIsCaptchaValid(false)
+            setWrongValidate("Please write the correct code");
           }
      }
+
+
   return (
     <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl">
       <div className="bg-gold2-color px-16 py-12 space-y-10 rounded-l-xl">
@@ -48,14 +72,14 @@ const LogInForm = () => {
           </h2>
           <p className=" text-sm/6 text-gray-500">
             Don’t have an account?{" "}
-            <Link className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link to='/signUp' className="font-semibold text-indigo-600 hover:text-indigo-500">
               Sign Up Now
             </Link>
           </p>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label className="block text-sm/6 font-medium text-gray-900">
                 Email address
@@ -78,7 +102,6 @@ const LogInForm = () => {
 
               <div className="mt-2">
                 <input
-                  id="password"
                   name="password"
                   type="password"
                   required
@@ -100,17 +123,18 @@ const LogInForm = () => {
 
               <div className="mt-2">
                 <input
-
+                onBlur={handleValidateCaptcha}
                   name="captcha"
                   type="text"
-                  ref={captchaRef}
+                  
                   required
                   placeholder="type the captcha above"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
-                <button onClick={handleValidateCaptcha}>Validate</button>
+                {/* <button onClick={handleValidateCaptcha}>Validate</button> */}
                 
               </div>
+              <p className="text-xs text-red-500">{wrongValidate}</p>
             </div>
 
             <div>
@@ -123,6 +147,7 @@ const LogInForm = () => {
               </button>
             </div>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

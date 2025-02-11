@@ -10,7 +10,6 @@ import banner4 from "../../../assets/banner/banner8.jpg";
 
 import { motion } from "framer-motion";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
-import Zoom from "react-medium-image-zoom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
