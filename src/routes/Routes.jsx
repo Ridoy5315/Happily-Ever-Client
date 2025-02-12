@@ -18,14 +18,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/biodatas",
-        element: (
-          <PrivateRoute>
-            <Biodatas></Biodatas>
-          </PrivateRoute>
-        ),
+        element: <Biodatas></Biodatas>,
       },
       {
-        path: "signUp",
+        path: "/signUp",
         element: <SignUp></SignUp>,
       },
       {
@@ -33,8 +29,12 @@ export const router = createBrowserRouter([
         element: <LogIn></LogIn>,
       },
       {
-        path: "/biodataDetails",
-        element: <BiodataDetails></BiodataDetails>,
+        path: "/bioDataDetails/:id",
+        element: (
+          <PrivateRoute>
+            <BiodataDetails></BiodataDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

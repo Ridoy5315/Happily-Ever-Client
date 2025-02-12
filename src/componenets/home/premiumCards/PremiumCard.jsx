@@ -46,7 +46,7 @@ const PremiumCard = ({ biodata }) => {
           />
         </div>
         <div className=" animate-border-gradient mt-3">
-          <p className="z-10 text-maroon-color px-6 text-sm uppercase py-0.5 font-medium">{status}</p>
+          <p className="z-10 text-maroon-color px-4 uppercase py-0.5 text-xs font-medium">{status} member</p>
         </div>
       </div>
       <div className="flex justify-between">

@@ -29,8 +29,8 @@ const CardForRightSide = ({ biodata }) => {
       {status === "premium" && (
         <div className="inline-flex">
           <div className="animate-border-gradient">
-            <p className="z-10 text-maroon-color px-6 text-sm uppercase py-0.5 font-medium">
-              {status}
+            <p className="z-10 text-maroon-color px-4 text-xs uppercase py-0.5 font-medium">
+              {status} member
             </p>
           </div>
         </div>
@@ -59,8 +59,8 @@ const CardForRightSide = ({ biodata }) => {
           </div>
         </div>
         {/* view profile button */}
-        <div className="bg-maroon-color text-whit flex justify-center py-2 rounded">
-          <Link to='biodataDetails' className="text-white">View Profile</Link>
+        <div className=" py-2 rounded">
+          <Link to={`/bioDataDetails/${bioDataId}`} className="bg-maroon-color  text-white">View Profile</Link>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import {
 import useAuth from "../../../hooks/useAuth";
 import SocialLogin from "../../../componenets/SocialLogin/SocialLogin";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 const LogInForm = () => {
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [wrongValidate, setWrongValidate] = useState("");
@@ -32,7 +33,14 @@ const LogInForm = () => {
 
     signIn(email, password).then((result) => {
       const user = result.user;
-      console.log(user);
+      console.log(user)
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
       navigate(from, { replace: true });
     });
   };
