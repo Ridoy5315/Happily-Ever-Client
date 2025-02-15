@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./PremiumCard.css";
+import { findUserAge } from "../../../api/utils";
 const PremiumCard = ({ biodata }) => {
+  const [age, setAge] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const {
     bioDataId,
     bioDataType,
+    dateOfBirth,
     profileImage,
     permanentDivisionName,
-    age,
     occupation,
     name,
     status,
   } = biodata || {};
+  useEffect(() => {
+    setAge(findUserAge(dateOfBirth));
+  }, []);
   return (
     <div
       className={`bg-gold2-color relative rounded-2xl p-6 space-y-6 transform transition-all hover:ring-[8px] hover:ring-gold-color hover:ring-opacity-50 ease-in-out duration-500 hover:scale-105 cursor-pointer `}
@@ -46,7 +51,9 @@ const PremiumCard = ({ biodata }) => {
           />
         </div>
         <div className=" animate-border-gradient mt-3">
-          <p className="z-10 text-maroon-color px-4 uppercase py-0.5 text-xs font-medium">{status} member</p>
+          <p className="z-10 text-maroon-color px-4 uppercase py-0.5 text-xs font-medium">
+            {status} member
+          </p>
         </div>
       </div>
       <div className="flex justify-between">
@@ -55,7 +62,8 @@ const PremiumCard = ({ biodata }) => {
           <p>Address: {permanentDivisionName}</p>
         </div>
         <div className="mt-3">
-          <Link to='biodataDetails'
+          <Link
+            to={`/bioDataDetails/${bioDataId}`}
             className={`absolute bottom-7 right-6 px-4 py-1 bg-maroon-color text-white rounded-lg transition-all duration-500 ${
               isHovered
                 ? "opacity-100 -translate-x-0 "

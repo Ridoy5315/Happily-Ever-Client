@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../home/premiumCards/PremiumCard.css";
 import { Link } from "react-router-dom";
+import { findUserAge } from "../../api/utils";
 const CardForRightSide = ({ biodata }) => {
+  const [age, setAge] = useState(null);
   const {
     bioDataId,
     bioDataType,
     profileImage,
     permanentDivisionName,
-    age,
+    dateOfBirth,
     occupation,
     status,
   } = biodata || {};
+
+  useEffect(() => {
+    setAge(findUserAge(dateOfBirth));
+  }, []);
   return (
     <div className="rounded-xl relative">
       <div className="bg-gold-color h-28"></div>
@@ -60,7 +66,12 @@ const CardForRightSide = ({ biodata }) => {
         </div>
         {/* view profile button */}
         <div className=" py-2 rounded">
-          <Link to={`/bioDataDetails/${bioDataId}`} className="bg-maroon-color  text-white">View Profile</Link>
+          <Link
+            to={`/bioDataDetails/${bioDataId}`}
+            className="bg-maroon-color  text-white"
+          >
+            View Profile
+          </Link>
         </div>
       </div>
     </div>

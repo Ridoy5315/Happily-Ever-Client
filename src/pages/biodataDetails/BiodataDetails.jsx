@@ -9,23 +9,25 @@ import { CiLock } from "react-icons/ci";
 import "../../componenets/home/premiumCards/PremiumCard.css";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import SimilarProfiles from "../../componenets/biodataDetails/SimilarProfiles";
+import { findUserAge } from "../../api/utils";
 const BiodataDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [details, setDetails] = useState({});
   const [similarData, setSimilarData] = useState([]);
   const { id } = useParams();
+  const [age, setAge] = useState(null);
 
   //get user information for check that user is premium or not
   const { data: role } = useQuery({
     queryKey: [user?.email, "role"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/user/premium/${user?.email}`);
-      console.log(data?.role)
+      console.log(data?.role);
       return data?.role;
     },
   });
-  
 
   const {
     bioDataId,
@@ -35,7 +37,6 @@ const BiodataDetails = () => {
     dateOfBirth,
     height,
     weight,
-    age,
     occupation,
     race,
     fathersName,
@@ -53,37 +54,31 @@ const BiodataDetails = () => {
     const bioDataDetails = async () => {
       const { data } = await axiosSecure.get(`/biodata-details/${id}`);
       setDetails(data);
-      // const email = data?.contactEmail;
-      const res = await axiosSecure.get(`/bioData-similar?email=${data?.contactEmail}&gender=${data?.bioDataType}`);
+      //calculate the age
+      const dob = findUserAge(data.dateOfBirth);
+      setAge(dob);
+      //get similar bio data for details page
+      const res = await axiosSecure.get(
+        `/bioData-similar?email=${data?.contactEmail}&gender=${data?.bioDataType}`
+      );
+
       const similar = res.data;
-      setSimilarData(similar)
+      setSimilarData(similar);
     };
     bioDataDetails();
   }, [bioDataId]);
 
-  //get similar bio data for details page
-  // const { data = [] } = useQuery({
-  //   queryKey: ["similar data"],
-  //   queryFn: async () => {
-  //     const {data} = await axiosSecure.get(`/bioData-similar/${details.bioDataType}`);
-  //     console.log(data)
-  //     return data;
-  //   },
-  // });
-
   return (
-    <div className=" mt-10">
+    <div className="mt-10 mb-28">
       {/*  details  */}
       <div className="grid grid-cols-2 gap-10">
         {/* profile photo */}
-        <div>
-          <div className=" w-full h-screen">
-            <img
-              src={profileImage}
-              alt="profile image"
-              className="w-full h-full object-cover mx-auto"
-            />
-          </div>
+        <div className="sticky top-20 h-screen  w-full">
+          <img
+            src={profileImage}
+            alt="profile image"
+            className="w-full h-full object-cover mx-auto"
+          />
         </div>
         {/* Details information */}
         <div className="mt-10 space-y-10 mr-16">
@@ -222,14 +217,19 @@ const BiodataDetails = () => {
               </div>
             )}
           </div>
+          {/* similar user */}
+          <div className="">
+            <h2 className="uppercase font-semibold text-maroon-color text-2xl">
+              Related profiles
+            </h2>
+            <div className="grid grid-cols-3 gap-3">
+              {similarData.map((item, index) => (
+                <SimilarProfiles key={index} item={item}></SimilarProfiles>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* similar user */}
-      <div>
-        {similarData.map( (item, index) => <p key={index}>{item.name}</p>)}
-      </div>
-
     </div>
   );
 };
