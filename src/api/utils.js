@@ -18,9 +18,7 @@ export const findUserAge = (dob) => {
      const birthDate = new Date(dob);
      const todayDate = new Date();
      let age = todayDate.getFullYear() - birthDate.getFullYear();
-     console.log(age);
      const differenceOfMonth = todayDate.getMonth() - birthDate.getMonth();
-     console.log(differenceOfMonth);
      if(differenceOfMonth < 0 || differenceOfMonth === 0 && todayDate.getDate() < birthDate.getDate()){
           age--;
      }

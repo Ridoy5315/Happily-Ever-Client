@@ -32,10 +32,10 @@ const Navbar = () => {
           <NavLink className="menu relative font-semibold">About Us</NavLink>
         </li>
         <li>
-          <NavLink className="menu relative font-semibold">Blogs</NavLink>
+          <NavLink className="menu relative font-semibold">Contact Us</NavLink>
         </li>
         <li>
-          <NavLink className="menu relative font-semibold">Program</NavLink>
+          <NavLink to='dashboard' className="menu relative font-semibold">Dashboard</NavLink>
         </li>
       </ul>
     </nav>

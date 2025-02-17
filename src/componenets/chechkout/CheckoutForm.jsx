@@ -13,14 +13,14 @@ const CheckoutForm = () => {
   useEffect(() => {
     getPaymentIntent();
   }, []);
-  console.log(clientSecret);
+  
   const getPaymentIntent = async () => {
     try {
       const { data } = await axiosSecure.post("/create-payment-intent");
 
       setClientSecret(data.clientSecret);
     } catch (err) {
-      console.oof(err);
+      console.log(err);
     }
   };
 
