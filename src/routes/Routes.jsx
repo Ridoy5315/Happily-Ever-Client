@@ -6,6 +6,7 @@ import LogIn from "../pages/Authentication/logIn/LogIn";
 import Biodatas from "../pages/bioData/BioDatas";
 import BiodataDetails from "../pages/biodataDetails/BiodataDetails";
 import PrivateRoute from "./PrivateRoute";
+import Checkout from "../pages/checkout/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BiodataDetails></BiodataDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/:id",
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
           </PrivateRoute>
         ),
       },

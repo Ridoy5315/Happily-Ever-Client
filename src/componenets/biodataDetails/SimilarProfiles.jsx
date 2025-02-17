@@ -24,7 +24,7 @@ const SimilarProfiles = ({ item }) => {
         {isHovered && <div className="absolute transition-all duration-500 inset-0 bg-gold-color/30"></div>}
         <div className="">
           <div 
-            className={`absolute bottom-7 right-6 px-4 py-1 text-center bg-maroon-color/60 text-white rounded-lg transition-all duration-500 ${
+            className={`absolute bottom-7 right-6 px-4 py-1 text-center bg-gold-color text-white rounded-lg transition-all duration-500 ${
               isHovered
                 ? "opacity-100 -translate-y-0 "
                 : "opacity-0 translate-y-10"

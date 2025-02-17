@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaCity } from "react-icons/fa";
 import { FaPeopleRoof, FaTreeCity } from "react-icons/fa6";
 import { MdOutlineMailOutline, MdOutlineWork } from "react-icons/md";
@@ -11,6 +11,7 @@ import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import SimilarProfiles from "../../componenets/biodataDetails/SimilarProfiles";
 import { findUserAge } from "../../api/utils";
+import { GrFavorite } from "react-icons/gr";
 const BiodataDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -24,7 +25,6 @@ const BiodataDetails = () => {
     queryKey: [user?.email, "role"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/user/premium/${user?.email}`);
-      console.log(data?.role);
       return data?.role;
     },
   });
@@ -211,11 +211,16 @@ const BiodataDetails = () => {
                   Your perfect match is just a step away! Get access to view
                   contact info.
                 </p>
-                <button className="bg-gold-color text-white py-1 px-4 rounded-xl flex items-center gap-1">
+                <Link to={`/checkout/${bioDataId}`} className="bg-gold-color text-white py-1 px-4 rounded-xl inline-flex items-center  gap-1">
                   <CiLock className="text-xl"></CiLock> Unlock Contact
-                </button>
+                </Link>
               </div>
             )}
+          </div>
+          {/* add to favorite */}
+          <div>
+            <button className="bg-maroon-color text-white py-0.5 px-4 rounded-xl flex items-center gap-2 text-lg"><GrFavorite className="text-xl"></GrFavorite>Add to Favorites</button>
+            {/* TODO: if this user already in favorite list icon will change */}
           </div>
           {/* similar user */}
           <div className="">
