@@ -6,7 +6,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({contactRequestInfo}) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
@@ -70,11 +70,19 @@ const CheckoutForm = () => {
     });
 
     if (paymentIntent.status === "succeeded") {
-      Swal.fire({
-        title: "Payment completed!",
-        icon: "success",
-        draggable: true,
-      });
+      try{
+        const {data} = await axiosSecure.post('/contact-request', contactRequestInfo);
+        if(data.insertedId){
+          Swal.fire({
+            title: "Payment completed!",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+      
     }
   };
 
@@ -96,7 +104,7 @@ const CheckoutForm = () => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe}>
+      <button type="submit" disabled={!stripe} className="bg-maroon-color text-white  px-6 py-1 rounded-lg">
         Pay $5
       </button>
     </form>

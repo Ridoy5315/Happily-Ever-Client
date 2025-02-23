@@ -30,15 +30,16 @@ const ViewBiodata = () => {
     },
   });
 
+  useEffect(() => {
+    if (bioData?.dateOfBirth) {
+      const dob = format(new Date(bioData?.dateOfBirth), "dd-MM-yyyy");
+      setAgeValue(findUserAge(dob));
+    }
+  }, [bioData]);
+
   if (loading) {
     return <LoadingSpinner></LoadingSpinner>;
   }
-
-  useEffect(() => {
-    const dob = format(new Date(bioData?.dateOfBirth), "dd-MM-yyyy");
-    console.log(dob);
-    setAgeValue(findUserAge(dob));
-  });
 
   return (
     <div>

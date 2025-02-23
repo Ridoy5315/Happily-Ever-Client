@@ -22,13 +22,24 @@ const Checkout = () => {
     userCard();
   }, []);
 
+  const contactRequestInfo = {
+    userEmail: user?.email,
+    status: Pending,
+    requested_Person: {
+      name: card?.name,
+      email: card?.contactEmail,
+      phone_Number: card?.mobileNumber,
+    }
+    
+  }
+
   return (
     <div className="w-10/12 mx-auto mt-10 grid grid-cols-3 gap-8">
       {/* checkout form */}
       <div className="col-span-2 bg-white py-8 px-10 space-y-7">
           {/* form */}
           <div className="space-y-3">
-            <h3 className="text-xl text-maroon-color font-semibold">
+            <h3 className="text-xl text-gold-color font-semibold">
               Information
             </h3>
             <div className="grid grid-cols-5 gap-2 items-center">
@@ -60,14 +71,14 @@ const Checkout = () => {
           </div>
           {/* payment details */}
           <div>
-            <h3 className="text-xl text-maroon-color font-semibold">
+            <h3 className="text-xl text-gold-color font-semibold">
               Payment details
             </h3>
             {/* checkout form */}
             <div>
                <Elements stripe={stripePromise}>
                     {/* form component */}
-                    <CheckoutForm></CheckoutForm>
+                    <CheckoutForm contactRequestInfo={contactRequestInfo}></CheckoutForm>
                </Elements>
             </div>
           </div>
