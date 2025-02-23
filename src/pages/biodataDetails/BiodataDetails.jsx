@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import SimilarProfiles from "../../componenets/biodataDetails/SimilarProfiles";
 import { findUserAge } from "../../api/utils";
 import { GrFavorite } from "react-icons/gr";
+import { format } from "date-fns";
 const BiodataDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -104,9 +105,9 @@ const BiodataDetails = () => {
             <p className="bg-maroon-color text-white rounded-xl text-sm py-0.5 px-3">
               {bioDataType}
             </p>
-            <p className="bg-gold-color text-white rounded-xl text-sm py-0.5 px-3">
-              {dateOfBirth}
-            </p>
+            {dateOfBirth && <p className="bg-gold-color text-white rounded-xl text-sm py-0.5 px-3">
+              {format(new Date(dateOfBirth), 'dd-MM-yyyy')}
+            </p>}
           </div>
           <div className="uppercase grid grid-cols-4 gap-5">
             <div className="border border-gold-color p-4 rounded-xl flex flex-col justify-center items-center space-y-1">

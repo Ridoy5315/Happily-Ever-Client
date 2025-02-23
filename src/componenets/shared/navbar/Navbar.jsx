@@ -24,7 +24,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="biodatas" className="menu relative font-semibold">
+          <NavLink to="/biodatas" className="menu relative font-semibold">
             Biodatas
           </NavLink>
         </li>
