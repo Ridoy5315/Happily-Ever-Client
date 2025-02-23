@@ -22,29 +22,29 @@ export const weightOptions = Array.from({ length: 100 - 40 + 1 }, (_, i) => ({
 
 //select for biodata type
 export const raceOptions = [
-     { value: "black", label: "Black" },
-     { value: "brown", label: "Brown" },
-     { value: "white", label: "White" },
+     { value: "Black", label: "Black" },
+     { value: "Brown", label: "Brown" },
+     { value: "White", label: "White" },
 ];
 //select for permanent division name
 export const permanentDivisionNameOptions = [
-     { value: "dhaka", label: "Dhaka" },
-     { value: "chattagram", label: "Chattagram" },
-     { value: "rangpur", label: "Rangpur" },
-     { value: "barisal", label: "Barisal" },
-     { value: "khulna", label: "Khulna" },
-     { value: "mymensingh", label: "Mymensingh" },
-     { value: "sylhet", label: "Sylhet" },
+     { value: "Dhaka", label: "Dhaka" },
+     { value: "Chattagram", label: "Chattagram" },
+     { value: "Rangpur", label: "Rangpur" },
+     { value: "Barisal", label: "Barisal" },
+     { value: "Khulna", label: "Khulna" },
+     { value: "Mymensingh", label: "Mymensingh" },
+     { value: "Sylhet", label: "Sylhet" },
 ];
 //select for present division name
 export const presentDivisionNameOptions = [
-     { value: "dhaka", label: "Dhaka" },
-     { value: "chattagram", label: "Chattagram" },
-     { value: "rangpur", label: "Rangpur" },
-     { value: "barisal", label: "Barisal" },
-     { value: "khulna", label: "Khulna" },
-     { value: "mymensingh", label: "Mymensingh" },
-     { value: "sylhet", label: "Sylhet" },
+     { value: "Dhaka", label: "Dhaka" },
+     { value: "Chattagram", label: "Chattagram" },
+     { value: "Rangpur", label: "Rangpur" },
+     { value: "Barisal", label: "Barisal" },
+     { value: "Khulna", label: "Khulna" },
+     { value: "Mymensingh", label: "Mymensingh" },
+     { value: "Sylhet", label: "Sylhet" },
 ];
 
 //select for occupation

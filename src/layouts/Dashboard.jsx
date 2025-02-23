@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   return (
     <div>
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-5">
         {/* side menu */}
         <div className="min-h-screen col-span-1  bg-white  flex flex-col justify-between shadow-[4px_0_12px_2px_rgba(212,187,108,0.300)]">
           {/* upper site */}
@@ -45,7 +45,7 @@ const Dashboard = () => {
             <ul className="space-y-7 ml-6 mt-7">
               <li className="">
                 <NavLink
-                  to="editBiodata"
+                  to="/dashboard"
                   className="flex items-center gap-4 text-xl"
                 >
                   <FaUserEdit className="text-2xl"></FaUserEdit>Edit Biodata
@@ -53,7 +53,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="viewBiodata"
+                  to="/dashboard/viewBiodata"
                   className="flex items-center gap-4 text-xl"
                 >
                   <FaStreetView className="2xl"></FaStreetView>View Biodata
@@ -61,7 +61,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="myContactRequest"
+                  to="/dashboard/myContactRequest"
                   className="flex items-center gap-3 text-xl"
                 >
                   <MdOutlineContactSupport className="text-2xl"></MdOutlineContactSupport>
@@ -70,7 +70,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="favoritesBiodata"
+                  to="/dashboard/favoritesBiodata"
                   className="flex items-center gap-3 text-xl"
                 >
                   <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>

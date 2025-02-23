@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <Dashboard></Dashboard>
@@ -61,19 +61,19 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: 'editBiodata',
+        path: '/dashboard',
         element: <EditBiodata></EditBiodata>
       },
       {
-        path: 'viewBiodata',
+        path: '/dashboard/viewBiodata',
         element: <ViewBiodata></ViewBiodata>
       },
       {
-        path: 'myContactRequest',
+        path: '/dashboard/myContactRequest',
         element: <MyContactRequest></MyContactRequest>
       },
       {
-        path: 'favoritesBiodata',
+        path: '/dashboard/favoritesBiodata',
         element: <FavoritesBiodata></FavoritesBiodata>
       },
     ]
