@@ -10,10 +10,18 @@ import { RxDashboard } from "react-icons/rx";
 import { IoMdSkipBackward } from "react-icons/io";
 import { CiLogin, CiLogout } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
-import logo from '../assets/website_logo2-removebg-preview.png'
+import logo from "../assets/website_logo2-removebg-preview.png";
+import { useEffect, useState } from "react";
 const Dashboard = () => {
+  // const [activeMenu, setActiveMenu] = useState(null);
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
+
+  // useEffect(() => {
+  //   if(isAdmin){
+  //     setActiveMenu()
+  //   }
+  // }, [])
   return (
     <div>
       <div className="grid grid-cols-5">
@@ -32,9 +40,11 @@ const Dashboard = () => {
             {/* logo */}
             <div className="border-b pb-7">
               <div className="w-40 mx-auto">
-              <img className="w-full " src={logo} alt="" />
+                <img className="w-full " src={logo} alt="" />
               </div>
-              <h3 className="text-center text-2xl font-semibold">Happily Ever</h3>
+              <h3 className="text-center text-2xl font-semibold">
+                Happily Ever
+              </h3>
             </div>
 
             <div className="border-b py-5 flex items-center gap-3 text-2xl font-semibold pl-6">
@@ -43,40 +53,81 @@ const Dashboard = () => {
             </div>
 
             <ul className="space-y-7 ml-6 mt-7">
-              <li className="">
-                <NavLink
-                  to="/dashboard"
-                  className="flex items-center gap-4 text-xl"
-                >
-                  <FaUserEdit className="text-2xl"></FaUserEdit>Edit Biodata
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/viewBiodata"
-                  className="flex items-center gap-4 text-xl"
-                >
-                  <FaStreetView className="2xl"></FaStreetView>View Biodata
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/myContactRequest"
-                  className="flex items-center gap-3 text-xl"
-                >
-                  <MdOutlineContactSupport className="text-2xl"></MdOutlineContactSupport>
-                  My Contact Request
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/favoritesBiodata"
-                  className="flex items-center gap-3 text-xl"
-                >
-                  <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>
-                  Favorites Biodata
-                </NavLink>
-              </li>
+              {isAdmin ? (
+                <>
+                  <li className="">
+                    <NavLink
+                      to="/dashboard/adminDashboard"
+                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                    >
+                      <FaUserEdit className="text-2xl"></FaUserEdit>Dashboard
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/manageUsers"
+                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                    >
+                      <FaStreetView className="2xl"></FaStreetView>Manage Users
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/approvedPremium"
+                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                    >
+                      <MdOutlineContactSupport className="text-2xl"></MdOutlineContactSupport>
+                      Approved Premium
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/approvedContactRequest"
+                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                    >
+                      <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>
+                      Approved Contact Request
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="">
+                    <NavLink
+                      to="/dashboard/editBiodata"
+                      className="flex items-center gap-4 text-xl"
+                    >
+                      <FaUserEdit className="text-2xl"></FaUserEdit>Edit Biodata
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/viewBiodata"
+                      className="flex items-center gap-4 text-xl"
+                    >
+                      <FaStreetView className="2xl"></FaStreetView>View Biodata
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/myContactRequest"
+                      className="flex items-center gap-3 text-xl"
+                    >
+                      <MdOutlineContactSupport className="text-2xl"></MdOutlineContactSupport>
+                      My Contact Request
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/favoritesBiodata"
+                      className="flex items-center gap-3 text-xl"
+                    >
+                      <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>
+                      Favorites Biodata
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           {/* lower site */}

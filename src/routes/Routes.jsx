@@ -12,6 +12,11 @@ import EditBiodata from "../pages/dashboard/editBiodata/EditBiodata";
 import ViewBiodata from "../pages/dashboard/viewBiodata/ViewBiodata";
 import MyContactRequest from "../pages/dashboard/myContactRequest/MyContactRequest";
 import FavoritesBiodata from "../pages/dashboard/favoritesBiodata/FavoritesBiodata";
+import AdminRoute from "./AdminRoute";
+import ManageUsers from "../pages/dashboard/Admin/ManageUsers.jsx/manageUsers";
+import AdminDashboard from "../pages/dashboard/Admin/AdminDashboard/adminDashboard";
+import ApprovedContactRequest from "../pages/dashboard/Admin/ApprovedContactRequest/approvedContactRequest";
+import ApprovedPremium from "../pages/dashboard/Admin/ApprovedPremium/approvedPremium";
 
 export const router = createBrowserRouter([
   {
@@ -60,22 +65,58 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // normal user route
       {
-        path: '/dashboard',
-        element: <EditBiodata></EditBiodata>
+        path: "/dashboard/editBiodata",
+        element: <EditBiodata></EditBiodata>,
       },
       {
-        path: '/dashboard/viewBiodata',
-        element: <ViewBiodata></ViewBiodata>
+        path: "/dashboard/viewBiodata",
+        element: <ViewBiodata></ViewBiodata>,
       },
       {
-        path: '/dashboard/myContactRequest',
-        element: <MyContactRequest></MyContactRequest>
+        path: "/dashboard/myContactRequest",
+        element: <MyContactRequest></MyContactRequest>,
       },
       {
-        path: '/dashboard/favoritesBiodata',
-        element: <FavoritesBiodata></FavoritesBiodata>
+        path: "/dashboard/favoritesBiodata",
+        element: <FavoritesBiodata></FavoritesBiodata>,
       },
-    ]
+
+      //admin route
+      {
+        path: "/dashboard/adminDashboard",
+        element: (
+          <AdminRoute>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/approvedPremium",
+        element: (
+          <AdminRoute>
+            <ApprovedPremium></ApprovedPremium>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/approvedContactRequest",
+        element: (
+          <AdminRoute>
+            <ApprovedContactRequest></ApprovedContactRequest>
+          </AdminRoute>
+        ),
+      },
+      
+    ],
   },
 ]);
