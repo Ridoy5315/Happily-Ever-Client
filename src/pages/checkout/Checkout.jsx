@@ -24,7 +24,7 @@ const Checkout = () => {
 
   const contactRequestInfo = {
     userEmail: user?.email,
-    status: Pending,
+    status: 'Pending',
     requested_Person: {
       name: card?.name,
       email: card?.contactEmail,

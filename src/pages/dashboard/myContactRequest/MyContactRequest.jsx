@@ -48,7 +48,7 @@ const MyContactRequest = () => {
   return (
     <div className="w-11/12 mx-auto py-20">
       {/* title */}
-      <p></p>
+      <p>My Requested Contact</p>
 
       <div className="w-full overflow-x-auto">
         <table

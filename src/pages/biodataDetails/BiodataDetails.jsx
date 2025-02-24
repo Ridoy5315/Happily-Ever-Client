@@ -13,6 +13,7 @@ import SimilarProfiles from "../../componenets/biodataDetails/SimilarProfiles";
 import { findUserAge } from "../../api/utils";
 import { GrFavorite } from "react-icons/gr";
 import { format } from "date-fns";
+import Swal from "sweetalert2";
 const BiodataDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -51,6 +52,16 @@ const BiodataDetails = () => {
     mobileNumber,
     status,
   } = details || {};
+
+  const favoriteBiodataInfo = {
+    userEmail: user?.email,
+    favoritePerson: {
+      name: details?.name,
+      biodata_Id: details?.bioDataId,
+      permanent_Address: details?.permanentDivisionName,
+      occupation: details?.occupation,
+    },
+  };
   useEffect(() => {
     const bioDataDetails = async () => {
       const { data } = await axiosSecure.get(`/biodata-details/${id}`);
@@ -68,6 +79,20 @@ const BiodataDetails = () => {
     };
     bioDataDetails();
   }, [bioDataId]);
+
+  const handleAddFavorite = async (details) => {
+    const { data } = await axiosSecure.post(
+      "/favorite-biodata",
+      favoriteBiodataInfo
+    );
+    if (data.insertedId) {
+      Swal.fire({
+        title: `${details?.name}'s biodata added in your favorite list`,
+        icon: "success",
+        draggable: true,
+      });
+    }
+  };
 
   return (
     <div className="mt-10 mb-28">
@@ -105,9 +130,11 @@ const BiodataDetails = () => {
             <p className="bg-maroon-color text-white rounded-xl text-sm py-0.5 px-3">
               {bioDataType}
             </p>
-            {dateOfBirth && <p className="bg-gold-color text-white rounded-xl text-sm py-0.5 px-3">
-              {format(new Date(dateOfBirth), 'dd-MM-yyyy')}
-            </p>}
+            {dateOfBirth && (
+              <p className="bg-gold-color text-white rounded-xl text-sm py-0.5 px-3">
+                {format(new Date(dateOfBirth), "dd-MM-yyyy")}
+              </p>
+            )}
           </div>
           <div className="uppercase grid grid-cols-4 gap-5">
             <div className="border border-gold-color p-4 rounded-xl flex flex-col justify-center items-center space-y-1">
@@ -212,7 +239,10 @@ const BiodataDetails = () => {
                   Your perfect match is just a step away! Get access to view
                   contact info.
                 </p>
-                <Link to={`/checkout/${bioDataId}`} className="bg-gold-color text-white py-1 px-4 rounded-xl inline-flex items-center  gap-1">
+                <Link
+                  to={`/checkout/${bioDataId}`}
+                  className="bg-gold-color text-white py-1 px-4 rounded-xl inline-flex items-center  gap-1"
+                >
                   <CiLock className="text-xl"></CiLock> Unlock Contact
                 </Link>
               </div>
@@ -220,7 +250,12 @@ const BiodataDetails = () => {
           </div>
           {/* add to favorite */}
           <div>
-            <button className="bg-maroon-color text-white py-0.5 px-4 rounded-xl flex items-center gap-2 text-lg"><GrFavorite className="text-xl"></GrFavorite>Add to Favorites</button>
+            <button
+              onClick={() => handleAddFavorite(details)}
+              className="bg-maroon-color text-white py-0.5 px-4 rounded-xl flex items-center gap-2 text-lg"
+            >
+              <GrFavorite className="text-xl"></GrFavorite>Add to Favorites
+            </button>
             {/* TODO: if this user already in favorite list icon will change */}
           </div>
           {/* similar user */}
