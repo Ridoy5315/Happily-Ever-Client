@@ -28,6 +28,7 @@ const Checkout = () => {
     requested_Person: {
       name: card?.name,
       email: card?.contactEmail,
+      bioDataId: card?.bioDataId,
       phone_Number: card?.mobileNumber,
     }
     

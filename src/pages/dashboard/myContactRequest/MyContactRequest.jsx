@@ -109,10 +109,10 @@ const MyContactRequest = () => {
                   {person?.status}
                 </td>
                 <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#f5e7e4] text-slate-600">
-                  {person?.status === 'Approved' && person?.requested_Person?.phone_Number}
+                  {person?.status === 'Approve' && person?.requested_Person?.phone_Number}
                 </td>
                 <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#f5e7e4] text-slate-600">
-                {person?.status === 'Approved' && person?.requested_Person?.email}
+                {person?.status === 'Approve' && person?.requested_Person?.email}
                 </td>
                 <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#f5e7e4] text-red-600">
                   <button onClick={() => handleDelete(person)}><RiDeleteBinLine className="mx-auto text-lg"></RiDeleteBinLine></button>

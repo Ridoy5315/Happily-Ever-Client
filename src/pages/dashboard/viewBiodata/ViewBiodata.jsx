@@ -17,12 +17,13 @@ import { IoIosArrowForward } from "react-icons/io";
 import { BsCalendarDate } from "react-icons/bs";
 import { findUserAge } from "../../../api/utils";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Swal from "sweetalert2";
 const ViewBiodata = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [ageValue, setAgeValue] = useState("");
 
-  const { data: bioData = {}, isPending: loading } = useQuery({
+  const { data: bioData = {}, isPending: loading, refetch } = useQuery({
     queryKey: ["bioData", user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/user/bioData/${user?.email}`);
@@ -39,6 +40,20 @@ const ViewBiodata = () => {
 
   if (loading) {
     return <LoadingSpinner></LoadingSpinner>;
+  }
+
+  const handlePremium = async() => {
+    const {data} = await axiosSecure.patch(`/user/premium/${user?.email}`)
+    if(data.modifiedCount > 0){
+      refetch()
+      Swal.fire({
+        title: "Success!",
+        text: `${person?.name} role has changed.`,
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   }
 
   return (
@@ -197,7 +212,7 @@ const ViewBiodata = () => {
             <FaArrowRightLong className="text-base"></FaArrowRightLong>
           </h5>
 
-          <button className="bg-gold-color text-white px-5 py-1 rounded-lg flex items-center gap-2">
+          <button onClick={handlePremium} className="bg-gold-color text-white px-5 py-1 rounded-lg flex items-center gap-2">
             <MdOutlineWorkspacePremium className="text-lg"></MdOutlineWorkspacePremium>
             Get Premium Now
           </button>

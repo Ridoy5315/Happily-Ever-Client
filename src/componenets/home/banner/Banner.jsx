@@ -43,11 +43,17 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10 text-gray-300 flex flex-col lg:h-screen md:h-screen lg:justify-center md:justify-center md:w-[65%] lg:w-[55%] text-center lg:text-start md:text-start pt-8 lg:pt-0 md:pt-0 ">
-                <h1>Your Happily Ever Awaits!</h1>
-                <p className="lg:text-5xl md:text-3xl text-xl lg:leading-snug leading-normal font-medium">
-                  Find your soulmate and create memories for a lifetime.
+              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+                  Find your{" "}
+                  <span className="text-gold-color text-6xl">
+                    soulmate and create memories
+                  </span>{" "}
+                  for a lifetime
                 </p>
+                <h1 className="text-center mt-8 text-3xl">
+                  Your Happily Ever Awaits!
+                </h1>
               </div>
 
               <motion.img
@@ -66,13 +72,18 @@ const Banner = () => {
         {/* slider 2 */}
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
-            
             <div className="relative">
-              <div className="absolute z-10 text-gray-300 flex flex-col lg:h-screen md:h-screen lg:justify-center md:justify-center md:w-[65%] lg:w-[55%] text-center lg:text-start md:text-start pt-8 lg:pt-0 md:pt-0 ">
-                <h1>Your Happily Ever Awaits!</h1>
-                <p className="lg:text-5xl md:text-3xl text-xl lg:leading-snug leading-normal font-medium">
-                  Find your soulmate and create memories for a lifetime.
+              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+                  Find your{" "}
+                  <span className="text-gold-color text-6xl">
+                    soulmate and create memories
+                  </span>{" "}
+                  for a lifetime
                 </p>
+                <h1 className="text-center mt-8 text-3xl">
+                  Your Happily Ever Awaits!
+                </h1>
               </div>
               <motion.img
                 key={`slide-1-${zoomKey}`}
@@ -91,11 +102,17 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10 text-gray-300 flex flex-col lg:h-screen md:h-screen lg:justify-center md:justify-center md:w-[65%] lg:w-[55%] text-center lg:text-start md:text-start pt-8 lg:pt-0 md:pt-0 ">
-                <h1>Your Happily Ever Awaits!</h1>
-                <p className="lg:text-5xl md:text-3xl text-xl lg:leading-snug leading-normal font-medium">
-                  Find your soulmate and create memories for a lifetime.
+              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+                  Find your{" "}
+                  <span className="text-gold-color text-6xl">
+                    soulmate and create memories
+                  </span>{" "}
+                  for a lifetime
                 </p>
+                <h1 className="text-center mt-8 text-3xl">
+                  Your Happily Ever Awaits!
+                </h1>
               </div>
               <motion.img
                 key={`slide-2-${zoomKey}`}
@@ -114,11 +131,17 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10 text-gray-300 flex flex-col lg:h-screen md:h-screen lg:justify-center md:justify-center md:w-[65%] lg:w-[55%] text-center lg:text-start md:text-start pt-8 lg:pt-0 md:pt-0 ">
-                <h1>Your Happily Ever Awaits!</h1>
-                <p className="lg:text-5xl md:text-3xl text-xl lg:leading-snug leading-normal font-medium">
-                  Find your soulmate and create memories for a lifetime.
+              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+                  Find your{" "}
+                  <span className="text-gold-color text-6xl">
+                    soulmate and create memories
+                  </span>{" "}
+                  for a lifetime
                 </p>
+                <h1 className="text-center mt-8 text-3xl">
+                  Your Happily Ever Awaits!
+                </h1>
               </div>
               <motion.img
                 key={`slide-3-${zoomKey}`}

@@ -14,6 +14,8 @@ import { findUserAge } from "../../api/utils";
 import { GrFavorite } from "react-icons/gr";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
+import usePremium from "../../hooks/usePremium";
+import LoadingSpinner from "../../componenets/shared/loadingSpinner/LoadingSpinner";
 const BiodataDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -23,13 +25,11 @@ const BiodataDetails = () => {
   const [age, setAge] = useState(null);
 
   //get user information for check that user is premium or not
-  const { data: role } = useQuery({
-    queryKey: [user?.email, "role"],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/user/premium/${user?.email}`);
-      return data?.role;
-    },
-  });
+  const [role, loading, refetch] = usePremium();
+
+  if(loading){
+    return <LoadingSpinner></LoadingSpinner>
+  }
 
   const {
     bioDataId,
