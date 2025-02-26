@@ -10,7 +10,10 @@
 ## Admin email & password
    - **Email: vai1@aci.com**
    - **Email: Aa@123456**
-## [https://matrimony-platform-27cb2.web.app//] (https://matrimony-platform-27cb2.web.app//)
+---
+
+## [https://matrimony-platform-27cb2.web.app] (https://matrimony-platform-27cb2.web.app)
+
 ---
 ## key features
 1. **Easy Registration**
