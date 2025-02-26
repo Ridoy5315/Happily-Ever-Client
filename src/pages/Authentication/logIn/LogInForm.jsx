@@ -55,9 +55,9 @@ const LogInForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl">
+    <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl font-fontBody">
       <div className="bg-gold2-color px-16 py-12 space-y-10 rounded-l-xl">
-        <div className="text-maroon-color">
+        <div className="text-maroon-color font-fontHeading">
           <h1 className="text-5xl mb-8">Now</h1>
           <h1 className="text-6xl font-semibold leading-tight">
             Log In to Discover Your Soulmate
@@ -71,10 +71,10 @@ const LogInForm = () => {
           />
         </div>
       </div>
-      <div className="">
+      <div className="pt-10">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h4>Welcome Back!</h4>
-          <h2 className=" text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h4 className="text-4xl text-maroon-color font-medium">Welcome Back!</h4>
+          <h2 className=" text-2xl/9 font-semibold tracking-tight text-gray-900">
             Log in to your account
           </h2>
           <p className=" text-sm/6 text-gray-500">
@@ -153,16 +153,17 @@ const LogInForm = () => {
                 {/* <button onClick={handleValidateCaptcha}>Validate</button> */}
               </div>
               <p className="text-xs text-red-500">{wrongValidate}</p>
+              <p className="text-maroon-color text-xs">Please press on the white space to verify</p>
             </div>
 
-            <div>
+            <div className="pb-10">
               <button
                 disabled={!isCaptchaValid}
                 type="submit"
                 className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
                   isCaptchaValid
-                    ? "bg-indigo-600 hover:bg-indigo-500"
-                    : "bg-gray-400 hover:bg-gray-500 cursor-not-allowed"
+                    ? "bg-maroon-color hover:bg-[#800000b1]"
+                    : "bg-gray-200 hover:bg-gray-300 cursor-not-allowed"
                 }`}
               >
                 Log In

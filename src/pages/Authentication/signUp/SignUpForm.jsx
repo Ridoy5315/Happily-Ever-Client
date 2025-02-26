@@ -72,9 +72,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl">
+    <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl font-fontBody">
       <div className="bg-gold2-color px-16 py-12 space-y-10 rounded-l-xl">
-        <div className="text-maroon-color">
+        <div className="text-maroon-color font-fontHeading">
           <h1 className="text-5xl mb-8">Now</h1>
           <h1 className="text-6xl font-semibold leading-tight">
             One Step Away from Something Amazing.
@@ -88,10 +88,10 @@ const SignUpForm = () => {
           />
         </div>
       </div>
-      <div className="">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h4>Sign Up for Free</h4>
-          <h2 className=" text-2xl/9 font-bold tracking-tight text-gray-900">
+      <div className="pt-10">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm space-y-2">
+          <h4 className="font-medium text-maroon-color text-3xl">Sign Up for Free</h4>
+          <h2 className=" text-xl font-bold tracking-tight text-gray-900">
             Sign up to your account
           </h2>
           <p className=" text-sm/6 text-gray-500">
@@ -103,7 +103,7 @@ const SignUpForm = () => {
           </p>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label className="block text-sm/6 font-medium text-gray-900">
@@ -205,7 +205,7 @@ const SignUpForm = () => {
               </div>
               <Label className="text-sm/6 text-gray-600">
                 By selecting this, you agree to our{" "}
-                <a href="#" className="font-semibold text-indigo-600">
+                <a href="#" className="font-semibold text-maroon-color">
                   privacy&nbsp;policy
                 </a>
                 .
@@ -214,9 +214,9 @@ const SignUpForm = () => {
               {/* <p>{alertText}</p> */}
             </Field>
 
-            <div>
+            <div className="pb-6">
               <input
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-maroon-color px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-[#800000b1]"
                 type="submit"
                 value="Sign Up"
               />

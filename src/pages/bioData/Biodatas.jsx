@@ -35,8 +35,8 @@ const Biodatas = () => {
   // const premiumBiodatas = allBiodatas.filter(item => item.contactEmail === premiumBiodatas)
 
   return (
-    <div className="mt-10 grid grid-cols-4 min-h-screen">
-      <div className="col-span-1">
+    <div className="pt-32 mb-20 grid grid-cols-4 min-h-screen gap-6">
+      <div className="col-span-1 px-8">
         <LeftSide
           setMinAge={setMinAge}
           setMaxAge={setMaxAge}

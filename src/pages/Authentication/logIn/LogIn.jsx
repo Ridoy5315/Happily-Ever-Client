@@ -3,7 +3,7 @@ import { motion } from "motion/react"
 import LogInForm from './LogInForm';
 const LogIn = () => {
      return (
-          <div>
+          <div className='pt-20'>
                <motion.div
                initial={{ opacity: 0, scale: 0.5}}
                animate={{opacity: 1, scale: 1}}

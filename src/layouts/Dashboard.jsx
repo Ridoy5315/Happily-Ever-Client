@@ -15,14 +15,15 @@ import { useEffect, useState } from "react";
 import { BiMaleFemale } from "react-icons/bi";
 const Dashboard = () => {
   // const [activeMenu, setActiveMenu] = useState(null);
-  const { user } = useAuth();
+  const { user, logOut} = useAuth();
   const [isAdmin] = useAdmin();
 
-  // useEffect(() => {
-  //   if(isAdmin){
-  //     setActiveMenu()
-  //   }
-  // }, [])
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  
   return (
     <div>
       <div className="grid grid-cols-5">
@@ -39,21 +40,21 @@ const Dashboard = () => {
             </Link>
 
             {/* logo */}
-            <div className="border-b pb-7">
-              <div className="w-40 mx-auto">
+            <div className="border-b pb-5">
+              <div className="w-36 mx-auto">
                 <img className="w-full " src={logo} alt="" />
               </div>
-              <h3 className="text-center text-2xl font-semibold">
+              <h3 className="text-center text-xl font-semibold">
                 Happily Ever
               </h3>
             </div>
 
-            <div className="border-b py-5 flex items-center gap-3 text-2xl font-semibold pl-6">
-              <RxDashboard className="text-3xl"></RxDashboard>
+            <div className="border-b py-3 flex items-center gap-3 text-xl font-semibold pl-6">
+              <RxDashboard className="text-2xl"></RxDashboard>
               <p>User Dashboard</p>
             </div>
 
-            <ul className="space-y-7 ml-6 mt-7">
+            <ul className="space-y-3 ml-3 mt-7">
               {isAdmin ? (
                 <>
                   <li className="">
@@ -96,43 +97,43 @@ const Dashboard = () => {
                   <li className="">
                     <NavLink
                       to="/dashboard/editBiodata"
-                      className="flex items-center gap-4 text-xl"
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <FaUserEdit className="text-2xl"></FaUserEdit>Edit Biodata
+                      <FaUserEdit className="text-xl"></FaUserEdit>Edit Biodata
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/viewBiodata"
-                      className="flex items-center gap-4 text-xl"
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <FaStreetView className="2xl"></FaStreetView>View Biodata
+                      <FaStreetView className="xl"></FaStreetView>View Biodata
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/myContactRequest"
-                      className="flex items-center gap-3 text-xl"
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <MdOutlineContactSupport className="text-2xl"></MdOutlineContactSupport>
+                      <MdOutlineContactSupport className="text-xl"></MdOutlineContactSupport>
                       My Contact Request
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/favoritesBiodata"
-                      className="flex items-center gap-3 text-xl"
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>
+                      <MdFavoriteBorder className="text-xl"></MdFavoriteBorder>
                       Favorites Biodata
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/gotMarried"
-                      className="flex items-center gap-3 text-xl"
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <BiMaleFemale className="text-2xl"></BiMaleFemale>
+                      <BiMaleFemale className="text-xl"></BiMaleFemale>
                       Got Married
                     </NavLink>
                   </li>
@@ -143,14 +144,9 @@ const Dashboard = () => {
           {/* lower site */}
           <div>
             {/* user */}
-            <div className="px-7 py-3 border-t space-y-2">
-              <div className="border-b pb-3">
-                <button className="flex items-center gap-4 text-xl font-semibold">
-                  <CiLogin className="text-2xl"></CiLogin>Login
-                </button>
-              </div>
-              <button className="flex items-center gap-4 text-xl font-semibold">
-                <CiLogout className="text-2xl font-semibold"></CiLogout>Logout
+            <div className="px-7 py-3 border-t">
+              <button onClick={handleLogOut} className="flex items-center gap-4 text-lg font-semibold">
+                <CiLogout className="text-xl font-semibold"></CiLogout>Logout
               </button>
             </div>
             <div className="flex items-center gap-3 border-t py-4 pl-7">

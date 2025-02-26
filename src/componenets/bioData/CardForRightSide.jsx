@@ -36,7 +36,7 @@ const CardForRightSide = ({ biodata , premiumBiodatas}) => {
         />
       </div>
       { isPremium && (
-        <div className="inline-flex">
+        <div className="inline-flex absolute">
           <div className="animate-border-gradient">
             <p className="z-10 text-maroon-color px-4 text-xs uppercase py-0.5 font-medium">
               premium member
@@ -46,9 +46,9 @@ const CardForRightSide = ({ biodata , premiumBiodatas}) => {
       ) }
 
       {/* biodata details */}
-      <div className="mt-24">
-        <div className="text-center pt-4">
-          <p>{occupation}</p>
+      <div className="mt-14">
+        <div className="text-center pt-12 pb-8">
+          <p className="text-maroon-color font-fontHeading font-semibold">{occupation}</p>
         </div>
         <div className="grid grid-cols-9 gap-1 px-2">
           <div className="col-span-3 flex flex-col items-center ">
@@ -68,10 +68,10 @@ const CardForRightSide = ({ biodata , premiumBiodatas}) => {
           </div>
         </div>
         {/* view profile button */}
-        <div className=" py-2 rounded">
+        <div className=" py-9 rounded">
           <Link
             to={`/bioDataDetails/${bioDataId}`}
-            className="bg-maroon-color  text-white"
+            className="bg-maroon-color px-6 py-1 rounded-2xl text-white"
           >
             View Profile
           </Link>

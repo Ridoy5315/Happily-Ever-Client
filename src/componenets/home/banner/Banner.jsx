@@ -24,7 +24,7 @@ const Banner = () => {
     setZoomKey((prev) => prev + 1);
   }, [currentSlide]); // Run effect every slide change
   return (
-    <div className="w-full h-full z-10">
+    <div className="w-full h-full z-10 font-fontHeading">
       <Swiper
         spaceBetween={30}
         enteredSlides={true}
@@ -43,10 +43,10 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+              <div className="absolute z-10  text-gray-300  px-80 pt-44">
                 <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl">
+                  <span className="text-gold-color text-6xl mx-4">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
@@ -73,10 +73,10 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+              <div className="absolute z-10  text-gray-300  px-80  pt-44 ">
                 <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl">
+                  <span className="text-gold-color text-6xl mx-4">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
@@ -102,10 +102,10 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+              <div className="absolute z-10  text-gray-300  px-80  pt-44 ">
                 <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl">
+                  <span className="text-gold-color text-6xl mx-4">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
@@ -131,10 +131,10 @@ const Banner = () => {
         <SwiperSlide>
           <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-96  pt-20 ">
+              <div className="absolute z-10  text-gray-300  px-80  pt-44 ">
                 <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl">
+                  <span className="text-gold-color text-6xl mx-4">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime

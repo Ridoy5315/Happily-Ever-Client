@@ -47,7 +47,7 @@ const SuccessStory = () => {
     };
   }, [success_couple]);
   return (
-    <div className="w-10/12 mx-auto pt-44 pb-20">
+    <div className="w-10/12 mx-auto pt-44 pb-20 font-fontHeading">
       <SectionTitle
         heading="Happy Beginnings"
         subHeading="Inspiring tales of lifelong partnerships"
@@ -84,10 +84,10 @@ const SuccessStory = () => {
                             {/* review */}
                             <div className="flex items-center gap-4 pt-4 text-sm text-maroon-color">
                               <div className="flex flex-col gap-1">
-                                <span className="font-bold uppercase">
+                                <span className="font-bold uppercase font-fontBody text-base">
                                 Marriage Date
                                 </span>
-                                <p>{format(new Date(couple?.marriageDate), "PP")}</p>
+                                <p className="font-fontBody">{format(new Date(couple?.marriageDate), "PP")}</p>
                               </div>
                             </div>
                           </figcaption>

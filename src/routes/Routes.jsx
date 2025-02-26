@@ -18,6 +18,9 @@ import AdminDashboard from "../pages/dashboard/Admin/AdminDashboard/adminDashboa
 import ApprovedContactRequest from "../pages/dashboard/Admin/ApprovedContactRequest/approvedContactRequest";
 import ApprovedPremium from "../pages/dashboard/Admin/ApprovedPremium/approvedPremium";
 import GotMarried from "../pages/dashboard/gotMarried/GotMarried";
+import AboutUs from "../pages/aboutUs/AboutUs";
+import ContactUs from "../pages/contactUS/ContactUs";
+import DashboardRedirect from "../pages/dashboard/DashboardRedirect";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +34,14 @@ export const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <Biodatas></Biodatas>,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contactUS",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "/signUp",
@@ -66,6 +77,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "/dashboard",
+        element: <DashboardRedirect></DashboardRedirect>,
+      },
       // normal user route
       {
         path: "/dashboard/editBiodata",
@@ -121,7 +136,6 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-      
     ],
   },
 ]);

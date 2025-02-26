@@ -31,7 +31,7 @@ const SuccessCounter = () => {
         onEnter={() => setCounter(true)}
         onExit={() => setCounter(false)}
       >
-        <div className="grid grid-cols-4 gap-20 mt-16 text-center">
+        <div className="grid grid-cols-4 gap-20 mt-16 text-center font-fontBody">
           <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
             <div className="flex justify-center">
               <FaUsersViewfinder className="text-4xl text-[#b97267]"></FaUsersViewfinder>
