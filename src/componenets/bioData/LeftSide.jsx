@@ -2,106 +2,93 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
-const LeftSide = () => {
-  const [bioData, setBioData] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [divisionValue, setDivisionValue] = useState(null);
-  console.log(divisionValue);
-  const gender = ["Male", "Female"];
-
-  const divisions = [
-    "Dhaka",
-    "Chattagram",
-    "Rangpur",
-    "Barisal",
-    "Khulna",
-    "Mymensingh",
-    "Sylhet",
-  ];
-
-  const handleDivision = (value) => {
-    setDivisionValue(value);
-    setIsOpen(false);
-  };
-
+import useBiodatas from "../../hooks/useBiodatas";
+import {
+  customStyles,
+  genderOptions,
+  presentDivisionNameOptions,
+} from "../../pages/dashboard/editBiodata/selectDatas";
+import Select from "react-select";
+const LeftSide = ({ setMinAge, setMaxAge, filterData, handleFieldChange }) => {
   return (
     <div>
       {/* age */}
       <div>
-        <div className="sm:col-span-3">
-          <label className="block font-medium text-gray-900">Expected Age</label>
-          <div className="mt-2 grid grid-cols-7">
-            <input
-              type="number"
-              name=""
-              id=""
-              className="col-span-3 focus:outline-none"
-            />
-            <span className="col-span-1 inline-flex justify-center">to</span>
-            <input type="number" name="" id="" className="col-span-3" />
-          </div>
+        <label className="block text-lg font-medium text-maroon-color">
+          Age
+        </label>
+        <div className="mt-2 flex items-center gap-2">
+          <span className="text-gray-800">From: </span>
+          <input
+            onKeyUp={(e) => setMinAge(e.target.value)}
+            type="number"
+            placeholder="Min Age"
+            name="expectedPartnerAgeFrom"
+            // value={formData.expectedPartnerAgeFrom}
+
+            required
+            className="block w-full rounded-md bg-white px-3 py-2 text-xl text-gray-800 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gold2-color sm:text-sm/6"
+          />
+          <span className="text-gray-800">To: </span>
+          <input
+            onKeyUp={(e) => setMaxAge(e.target.value)}
+            type="number"
+            placeholder="Max Age"
+            name="expectedPartnerAgeTo"
+            // value={formData.expectedPartnerAgeTo}
+
+            required
+            className="block w-full rounded-md bg-white px-3 py-2 text-xl text-gray-800 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gold2-color sm:text-sm/6"
+          />
         </div>
       </div>
       {/* biodata type */}
       <div>
-        <div className="p-4 space-y-2">
-          <p>Biodata Type</p>
-          <div>{bioData && <label>You selected: {bioData}</label>}</div>
-          {gender.map((data, index) => (
-            <label
-              key={index}
-              className={`flex items-center cursor-pointer px-4 py-2 border rounded-lg transition-all
-          ${
-            bioData === data
-              ? "bg-blue-500 text-white border-blue-600"
-              : "bg-gray-100 text-gray-800 border-gray-300"
-          }`}
-            >
-              <input
-                type="radio"
-                name="single-select"
-                value={data}
-                checked={bioData === data}
-                onChange={() => setBioData(data)}
-                className="hidden"
-              />
-              {data}
-            </label>
-          ))}
+        <div className="relative ">
+          <label className="block text-lg font-medium text-maroon-color">
+            Gender
+          </label>
+          <Select
+            options={genderOptions}
+            value={
+              filterData.bioDataType
+                ? {
+                    label: filterData.bioDataType,
+                    value: filterData.bioDataType,
+                  }
+                : ""
+            }
+            onChange={(selectedOption) =>
+              handleFieldChange("bioDataType", selectedOption?.value)
+            }
+            required
+            styles={customStyles}
+            placeholder="select..."
+          />
         </div>
       </div>
       {/* division */}
       <div>
-        <div className="min-h-fit flex-row justify-start p-4">
-          <div className="">
-            <button
-              className="inline-flex justify-center items-center gap-2 w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              Permanent Division name{" "}
-              {isOpen ? (
-                <IoIosArrowUp className="text-xl"></IoIosArrowUp>
-              ) : (
-                <IoIosArrowDown className="text-xl"></IoIosArrowDown>
-              )}
-            </button>
-            <span className="">{divisionValue}</span>
-          </div>
-          {isOpen && (
-            <div className="origin-top-right left-0 mt-2 w-full shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
-              <div className="py-1">
-                {divisions.map((division, index) => (
-                  <NavLink
-                    key={index}
-                    onClick={() => handleDivision(division)}
-                    className="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white"
-                  >
-                    {division}
-                  </NavLink>
-                ))}
-              </div>
-            </div>
-          )}
+        <div className="relative ">
+          <label className="block text-lg font-medium text-maroon-color">
+            Present Division Name
+          </label>
+          <Select
+            options={presentDivisionNameOptions}
+            value={
+              filterData.permanentDivisionName
+                ? {
+                    label: filterData.permanentDivisionName,
+                    value: filterData.permanentDivisionName,
+                  }
+                : ""
+            }
+            onChange={(selectedOption) =>
+              handleFieldChange("permanentDivisionName", selectedOption?.value)
+            }
+            required
+            styles={customStyles}
+          />
         </div>
       </div>
     </div>

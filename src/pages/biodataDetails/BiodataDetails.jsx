@@ -14,22 +14,21 @@ import { findUserAge } from "../../api/utils";
 import { GrFavorite } from "react-icons/gr";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
-import usePremium from "../../hooks/usePremium";
-import LoadingSpinner from "../../componenets/shared/loadingSpinner/LoadingSpinner";
+import useBiodatas from "../../hooks/useBiodatas";
 const BiodataDetails = () => {
+  const { id } = useParams();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [details, setDetails] = useState({});
   const [similarData, setSimilarData] = useState([]);
-  const { id } = useParams();
-  const [age, setAge] = useState(null);
+  // const [age, setAge] = useState(null);
+  const [biodatas] = useBiodatas();
+  const [premium, setPremium] = useState(false);
+  const [userPremium, setUserPremium] = useState(false);
 
-  //get user information for check that user is premium or not
-  const [role, loading, refetch] = usePremium();
+  console.log(premium, userPremium)
 
-  if(loading){
-    return <LoadingSpinner></LoadingSpinner>
-  }
+  const premiumBiodatas = biodatas?.premiumBiodatasResult;
 
   const {
     bioDataId,
@@ -50,7 +49,7 @@ const BiodataDetails = () => {
     expectedPartnerWeight,
     contactEmail,
     mobileNumber,
-    status,
+    age,
   } = details || {};
 
   const favoriteBiodataInfo = {
@@ -66,9 +65,7 @@ const BiodataDetails = () => {
     const bioDataDetails = async () => {
       const { data } = await axiosSecure.get(`/biodata-details/${id}`);
       setDetails(data);
-      //calculate the age
-      const dob = findUserAge(data.dateOfBirth);
-      setAge(dob);
+
       //get similar bio data for details page
       const res = await axiosSecure.get(
         `/bioData-similar?email=${data?.contactEmail}&gender=${data?.bioDataType}`
@@ -78,7 +75,22 @@ const BiodataDetails = () => {
       setSimilarData(similar);
     };
     bioDataDetails();
-  }, [bioDataId]);
+  }, []);
+
+  useEffect(() => {
+    if (premiumBiodatas) {
+      const isPremium = premiumBiodatas.some(
+        (item) => item.email === contactEmail
+      );
+      if (isPremium) setPremium(true);
+    }
+    if (premiumBiodatas) {
+      const isPremium = premiumBiodatas.some(
+        (item) => item.email === user?.email
+      );
+      if (isPremium) setUserPremium(true);
+    }
+  }, [premiumBiodatas, contactEmail, user?.email]);
 
   const handleAddFavorite = async (details) => {
     const { data } = await axiosSecure.post(
@@ -115,11 +127,11 @@ const BiodataDetails = () => {
               </p>
               <p>ID: {bioDataId}</p>
             </div>
-            {status === "premium" && (
+            {premium && (
               <div className="inline-flex">
                 <div className="animate-border-gradient">
                   <p className="z-10 text-maroon-color px-4 text-xs uppercase py-0.5 font-medium">
-                    {status} member
+                    Premium member
                   </p>
                 </div>
               </div>
@@ -216,7 +228,7 @@ const BiodataDetails = () => {
             <h2 className="uppercase font-semibold text-maroon-color text-2xl">
               Contact Info
             </h2>
-            {role === "premium" ? (
+            {userPremium  ? (
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <div className="border border-gold-color p-1 rounded-lg">

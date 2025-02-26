@@ -21,7 +21,7 @@ import Swal from "sweetalert2";
 const ViewBiodata = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [ageValue, setAgeValue] = useState("");
+  // const [ageValue, setAgeValue] = useState(0);
 
   const { data: bioData = {}, isPending: loading, refetch } = useQuery({
     queryKey: ["bioData", user?.email],
@@ -31,12 +31,7 @@ const ViewBiodata = () => {
     },
   });
 
-  useEffect(() => {
-    if (bioData?.dateOfBirth) {
-      const dob = format(new Date(bioData?.dateOfBirth), "dd-MM-yyyy");
-      setAgeValue(findUserAge(dob));
-    }
-  }, [bioData]);
+  
 
   if (loading) {
     return <LoadingSpinner></LoadingSpinner>;
@@ -131,7 +126,7 @@ const ViewBiodata = () => {
               <div className="bg-white shadow-[1px_1px_8px_0_rgba(128,0,0,0.400)] py-4 px-6 rounded-2xl text-center">
                 <MdEmojiPeople className="mx-auto text-6xl text-gold-color"></MdEmojiPeople>
                 <h5 className="text-xl text-gold-color font-semibold">Age</h5>
-                <p className="text-sm text-gray-700">{ageValue} years old</p>
+                <p className="text-sm text-gray-700">{bioData.age} years old</p>
               </div>
             </div>
           </div>

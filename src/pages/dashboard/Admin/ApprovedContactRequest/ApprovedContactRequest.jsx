@@ -35,7 +35,7 @@ const ApprovedContactRequest = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const { data } = await axiosSecure.patch(
-          `/contact-request/${person?.requested_Person?.email}`
+          `/contact-request/${person?._id}`
         );
         console.log(data);
         if (data.modifiedCount > 0) {

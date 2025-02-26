@@ -17,6 +17,7 @@ import ManageUsers from "../pages/dashboard/Admin/ManageUsers.jsx/manageUsers";
 import AdminDashboard from "../pages/dashboard/Admin/AdminDashboard/adminDashboard";
 import ApprovedContactRequest from "../pages/dashboard/Admin/ApprovedContactRequest/approvedContactRequest";
 import ApprovedPremium from "../pages/dashboard/Admin/ApprovedPremium/approvedPremium";
+import GotMarried from "../pages/dashboard/gotMarried/GotMarried";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/favoritesBiodata",
         element: <FavoritesBiodata></FavoritesBiodata>,
+      },
+      {
+        path: "/dashboard/gotMarried",
+        element: <GotMarried></GotMarried>,
       },
 
       //admin route

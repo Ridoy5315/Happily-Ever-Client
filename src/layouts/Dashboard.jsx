@@ -12,6 +12,7 @@ import { CiLogin, CiLogout } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
 import logo from "../assets/website_logo2-removebg-preview.png";
 import { useEffect, useState } from "react";
+import { BiMaleFemale } from "react-icons/bi";
 const Dashboard = () => {
   // const [activeMenu, setActiveMenu] = useState(null);
   const { user } = useAuth();
@@ -124,6 +125,15 @@ const Dashboard = () => {
                     >
                       <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>
                       Favorites Biodata
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/gotMarried"
+                      className="flex items-center gap-3 text-xl"
+                    >
+                      <BiMaleFemale className="text-2xl"></BiMaleFemale>
+                      Got Married
                     </NavLink>
                   </li>
                 </>

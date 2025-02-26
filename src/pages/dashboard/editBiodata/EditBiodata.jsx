@@ -96,6 +96,7 @@ const EditBiodata = () => {
       weight: formData?.weight,
       occupation: formData?.occupation,
       race: formData?.race,
+      age: ageValue,
       fathersName: formData?.fathersName,
       mothersName: formData?.mothersName,
       permanentDivisionName: formData?.permanentDivisionName,
@@ -334,11 +335,7 @@ const EditBiodata = () => {
                     name="image"
                     className="col-span-2 block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
-                  {/* {formData.image && (
-                    <div className="col-span-1 w-12 h-12">
-                      
-                    </div>
-                  )} */}
+                  
                 </div>
               </div>
             </div>

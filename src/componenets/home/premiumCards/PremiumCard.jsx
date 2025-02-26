@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 import "./PremiumCard.css";
 import { findUserAge } from "../../../api/utils";
 const PremiumCard = ({ biodata }) => {
-  const [age, setAge] = useState(null);
+  // const [age, setAge] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  console.log(biodata)
   const {
     bioDataId,
     bioDataType,
-    dateOfBirth,
     profileImage,
     permanentDivisionName,
     occupation,
     name,
-    status,
+    age,
   } = biodata || {};
-  useEffect(() => {
-    setAge(findUserAge(dateOfBirth));
-  }, []);
+  // useEffect(() => {
+  //   setAge(findUserAge(dateOfBirth));
+  // }, []);
   return (
     <div
       className={`bg-gold2-color relative rounded-2xl p-6 space-y-6 transform transition-all hover:ring-[8px] hover:ring-gold-color hover:ring-opacity-50 ease-in-out duration-500 hover:scale-105 cursor-pointer `}
@@ -52,7 +52,7 @@ const PremiumCard = ({ biodata }) => {
         </div>
         <div className=" animate-border-gradient mt-3">
           <p className="z-10 text-maroon-color px-4 uppercase py-0.5 text-xs font-medium">
-            {status} member
+            Premium member
           </p>
         </div>
       </div>

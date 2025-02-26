@@ -7,8 +7,19 @@ import { FaUsersViewfinder } from "react-icons/fa6";
 import { SlUserFemale } from "react-icons/sl";
 import { GrUserManager } from "react-icons/gr";
 import { GiLovers } from "react-icons/gi";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 const SuccessCounter = () => {
+  const axiosPublic = useAxiosPublic();
   const [counter, setCounter] = useState(false);
+
+  const { data } = useQuery({
+    queryKey: [ "count"],
+    queryFn: async () => {
+      const { data } = await axiosPublic("/user-count");
+      return data;
+    },
+  });
 
   return (
     <div className="w-10/12 mx-auto pt-44">
@@ -27,9 +38,12 @@ const SuccessCounter = () => {
             </div>
             <h2 className="text-5xl text-maroon-color font-medium">
               {counter && (
-                <CountUp start={0} end={4576} duration={2.75}></CountUp>
+                <CountUp
+                  start={0}
+                  end={data?.totalUsers}
+                  duration={2.75}
+                ></CountUp>
               )}
-              
             </h2>
             <p className="text-[#b97267] font-semibold text-xl">
               Total Biodata
@@ -41,37 +55,40 @@ const SuccessCounter = () => {
             </div>
             <h2 className="text-5xl text-maroon-color font-medium">
               {counter && (
-                <CountUp start={0} end={1156} duration={2.75}></CountUp>
+                <CountUp
+                  start={0}
+                  end={data?.femaleUsers}
+                  duration={2.75}
+                ></CountUp>
               )}
-              
             </h2>
             <p className="text-[#b97267] font-semibold text-xl">
-              Total Girl's Biodata
+              Total Female Biodata
             </p>
           </div>
           <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
-          <div className="flex justify-center">
+            <div className="flex justify-center">
               <GrUserManager className="text-4xl text-[#b97267]"></GrUserManager>
             </div>
             <h2 className="text-5xl text-maroon-color font-medium">
               {counter && (
-                <CountUp start={0} end={1299} duration={2.75}></CountUp>
+                <CountUp
+                  start={0}
+                  end={data?.maleUsers}
+                  duration={2.75}
+                ></CountUp>
               )}
-              
             </h2>
             <p className="text-[#b97267] font-semibold text-xl">
-              Total Boy's Biodata
+              Total Male Biodata
             </p>
           </div>
           <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
-          <div className="flex justify-center">
+            <div className="flex justify-center">
               <GiLovers className="text-4xl text-[#b97267]"></GiLovers>
             </div>
             <h2 className="text-5xl text-maroon-color font-medium">
-              {counter && (
-                <CountUp start={0} end={189} duration={2.75}></CountUp>
-              )}
-              
+              {counter && <CountUp start={0} end={3} duration={2.75}></CountUp>}
             </h2>
             <p className="text-[#b97267] font-semibold text-xl">
               Total Successful Marriages

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../home/premiumCards/PremiumCard.css";
 import { Link } from "react-router-dom";
 import { findUserAge } from "../../api/utils";
-const CardForRightSide = ({ biodata }) => {
-  const [age, setAge] = useState(null);
+const CardForRightSide = ({ biodata , premiumBiodatas}) => {
+  // const [age, setAge] = useState(null);
   const {
     bioDataId,
     bioDataType,
@@ -11,12 +11,15 @@ const CardForRightSide = ({ biodata }) => {
     permanentDivisionName,
     dateOfBirth,
     occupation,
-    status,
+    contactEmail,
+    age,
   } = biodata || {};
 
-  useEffect(() => {
-    setAge(findUserAge(dateOfBirth));
-  }, []);
+  const isPremium = premiumBiodatas.some(item => item.email === contactEmail);
+
+  // useEffect(() => {
+  //   setAge(findUserAge(dateOfBirth));
+  // }, []);
   return (
     <div className="rounded-xl relative">
       <div className="bg-gold-color h-28"></div>
@@ -32,15 +35,15 @@ const CardForRightSide = ({ biodata }) => {
           className="w-full h-full rounded-full object-cover"
         />
       </div>
-      {status === "premium" && (
+      { isPremium && (
         <div className="inline-flex">
           <div className="animate-border-gradient">
             <p className="z-10 text-maroon-color px-4 text-xs uppercase py-0.5 font-medium">
-              {status} member
+              premium member
             </p>
           </div>
         </div>
-      )}
+      ) }
 
       {/* biodata details */}
       <div className="mt-24">
