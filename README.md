@@ -12,7 +12,7 @@
    - **Email: Aa@123456**
 ---
 
-## [https://matrimony-platform-27cb2.web.app] (https://matrimony-platform-27cb2.web.app)
+## [https://matrimony-platform-27cb2.web.app](https://matrimony-platform-27cb2.web.app)
 
 ---
 ## key features

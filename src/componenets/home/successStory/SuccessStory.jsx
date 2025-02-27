@@ -47,7 +47,7 @@ const SuccessStory = () => {
     };
   }, [success_couple]);
   return (
-    <div className="w-10/12 mx-auto pt-44 pb-20 font-fontHeading">
+    <div className="lg:w-10/12 w-11/12 mx-auto lg:pt-44 pt-24 lg:pb-20 pb-14 font-fontHeading">
       <SectionTitle
         heading="Happy Beginnings"
         subHeading="Inspiring tales of lifelong partnerships"
@@ -58,14 +58,14 @@ const SuccessStory = () => {
           <div className="glide-08 relative w-full">
             {/*    <!-- Slides --> */}
             <div data-glide-el="track">
-              <ul className="pt-64 relative whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0 pb-12">
+              <ul className="lg:pt-64 md:pt-28 pt-32 relative whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0 pb-12">
                 
                 {success_couple.map( couple => <li key={couple._id}>
                   <div className="h-full w-full">
                     {/*                    <!-- Start Testimonial --> */}
                     <div className=" h-full overflow-hidden rounded text-slate-700 shadow-lg shadow-[#eacfca]">
-                      <div className="absolute top-[12%] translate-y-[5%] translate-x-[25%] mx-auto ">
-                        <div className="w-96 h-72 mx-auto">
+                      <div className="absolute lg:top-[12%] top-[6%] translate-y-[5%] translate-x-[25%] mx-auto ">
+                        <div className="lg:w-96 lg:h-72 md:w-56 md:h-56 w-60 h-60 mx-auto">
                           <img
                             src={couple?.coupleImage}
                             alt="user name"
@@ -73,9 +73,9 @@ const SuccessStory = () => {
                           />
                         </div>
                       </div>
-                      <div className="relative p-6 pt-44">
+                      <div className="relative lg:p-6 p-3 pt-44 lg:pt-44">
                         <figure className="">
-                          <blockquote className="p-6 text-lg leading-relaxed">
+                          <blockquote className="lg:p-6 p-3 lg:text-lg text-sm leading-relaxed">
                             <p>
                               {couple?.successStoryReview}
                             </p>
@@ -93,7 +93,7 @@ const SuccessStory = () => {
                           </figcaption>
                         </figure>
                         {/* quatetion */}
-                        <FaQuoteLeft className="absolute left-4 top-36 -z-10 text-8xl text-[#eacfca]"></FaQuoteLeft>
+                        <FaQuoteLeft className="absolute left-4 lg:top-36 top-40 -z-10 lg:text-8xl text-6xl text-[#eacfca]"></FaQuoteLeft>
                         
                       </div>
                     </div>

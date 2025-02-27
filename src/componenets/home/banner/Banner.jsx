@@ -16,7 +16,6 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "react-medium-image-zoom/dist/styles.css";
 const Banner = () => {
-  const [fadeKey, setFadeKey] = useState(0);
   const [zoomKey, setZoomKey] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
@@ -41,17 +40,17 @@ const Banner = () => {
       >
         {/* slider 1 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
+          <div className="overflow-hidden w-full relative bg-cover bg-center  min-h-[500px] h-auto">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-80 pt-44">
-                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+              <div className="absolute z-10 text-gray-300 lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20">
+                <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl mx-4">
+                  <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
                 </p>
-                <h1 className="text-center mt-8 text-3xl">
+                <h1 className="text-center lg:mt-8 md:mt-6 mt-2 lg:text-3xl md:text-xl text-xs">
                   Your Happily Ever Awaits!
                 </h1>
               </div>
@@ -60,7 +59,7 @@ const Banner = () => {
                 key={`slide-0-${zoomKey}`}
                 src={banner3}
                 alt=""
-                className="w-full h-full object-cover rounded-lg shadow-lg"
+                className="w-full lg:h-full md:h-full h-[500px] object-cover rounded-lg shadow-lg"
                 initial={{ scale: 1 }} // Start zoomed in
                 animate={{ scale: 1.5 }} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
@@ -71,17 +70,17 @@ const Banner = () => {
         </SwiperSlide>
         {/* slider 2 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
+          <div className="overflow-hidden w-full relative bg-cover bg-center min-h-[500px] h-auto">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-80  pt-44 ">
-                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+              <div className="absolute z-10  text-gray-300  lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20 ">
+                <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl mx-4">
+                  <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
                 </p>
-                <h1 className="text-center mt-8 text-3xl">
+                <h1 className="text-center lg:mt-8 md:mt-6 mt-2 lg:text-3xl md:text-xl text-xs">
                   Your Happily Ever Awaits!
                 </h1>
               </div>
@@ -89,7 +88,7 @@ const Banner = () => {
                 key={`slide-1-${zoomKey}`}
                 src={banner1}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full lg:h-full md:h-full h-[500px] object-cover"
                 initial={{ scale: 1, filter: "blur(0px)" }} // Start zoomed in
                 animate={{ scale: 1.5, filter: "blur(5px)" }} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
@@ -100,17 +99,17 @@ const Banner = () => {
         </SwiperSlide>
         {/* slider 3 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
+          <div className="overflow-hidden w-full relative bg-cover bg-center min-h-[500px] h-auto">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-80  pt-44 ">
-                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+              <div className="absolute z-10  text-gray-300  lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20">
+                <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl mx-4">
+                  <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
                 </p>
-                <h1 className="text-center mt-8 text-3xl">
+                <h1 className="text-center lg:mt-8 md:mt-6 mt-2 lg:text-3xl md:text-xl text-xs">
                   Your Happily Ever Awaits!
                 </h1>
               </div>
@@ -118,7 +117,7 @@ const Banner = () => {
                 key={`slide-2-${zoomKey}`}
                 src={banner4}
                 alt=""
-                className="w-full h-full object-cover rounded-lg shadow-lg"
+                className="w-full lg:h-full md:h-full h-[500px] object-cover rounded-lg shadow-lg"
                 initial={{ scale: 1 }} // Start zoomed in
                 animate={{ scale: 1.5 }} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
@@ -129,17 +128,17 @@ const Banner = () => {
         </SwiperSlide>
         {/* slider 4 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center lg:h-screen md:h-screen h-[500px]">
+          <div className="overflow-hidden w-full relative bg-cover bg-center min-h-[500px] h-auto">
             <div className="relative">
-              <div className="absolute z-10  text-gray-300  px-80  pt-44 ">
-                <p className="lg:text-5xl md:text-3xl text-xl text-center lg:leading-snug leading-normal font-medium">
+              <div className="absolute z-10  text-gray-300 lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20 ">
+                <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
-                  <span className="text-gold-color text-6xl mx-4">
+                  <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
                     soulmate and create memories
                   </span>{" "}
                   for a lifetime
                 </p>
-                <h1 className="text-center mt-8 text-3xl">
+                <h1 className="text-center lg:mt-8 md:mt-6 mt-2 lg:text-3xl md:text-xl text-xs">
                   Your Happily Ever Awaits!
                 </h1>
               </div>
@@ -147,7 +146,7 @@ const Banner = () => {
                 key={`slide-3-${zoomKey}`}
                 src={banner2}
                 alt=""
-                className="w-full h-full object-cover rounded-lg shadow-lg"
+                className="w-full lg:h-full md:h-full h-[500px] object-cover rounded-lg shadow-lg"
                 initial={{ scale: 1 }} // Start zoomed in
                 animate={{ scale: 1.5 }} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition

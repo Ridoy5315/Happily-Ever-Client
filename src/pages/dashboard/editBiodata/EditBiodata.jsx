@@ -157,7 +157,7 @@ const EditBiodata = () => {
     
   };
 
-  //for next nad previous button
+  //for next and previous button
   const handleNextStep = () => {
     if (step < 3) {
       setStep(step + 1);

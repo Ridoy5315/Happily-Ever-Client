@@ -15,13 +15,13 @@ const PremiumCards = () => {
   // const premiumBiodatas = biodatas.filter(item => item.status === 'premium')
 
   return (
-    <div className="relative bg-black pt-28 pb-20">
-      <img className="absolute -top-4 transform " src={flower} alt="" />
+    <div className="relative bg-black lg:pt-28 md:pt-12 pt-8 pb-20">
+      <img className="absolute -top-4 transform md:w-56 w-40" src={flower} alt="" />
       <SectionTitle
         heading="✨ Love Begins with Premium!"
         subHeading="Elevate your search with high-quality, serious relationship seekers"
       ></SectionTitle>
-      <div className="grid grid-cols-3 gap-8 w-10/12 mx-auto mt-16">
+      <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-8 md:gap-5 gap-4 lg:w-10/12 w-11/12 mx-auto lg:mt-16 md:mt-8 mt-4">
         {premiumBiodatas && premiumBiodatas.length > 0 ? (
           premiumBiodatas
             .slice(0, 6)

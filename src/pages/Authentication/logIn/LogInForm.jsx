@@ -37,9 +37,9 @@ const LogInForm = () => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Login successful! Welcome back.",
         showConfirmButton: false,
-        timer: 1500
+        timer: 2500
       });
       navigate(from, { replace: true });
     });

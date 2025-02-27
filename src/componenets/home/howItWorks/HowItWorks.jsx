@@ -10,7 +10,7 @@ import married from "./jsonFiles/married.json";
 import flower from "../../../assets/flower/f1-removebg-preview.png";
 const HowItWorks = () => {
   return (
-    <div className=" relative pt-28 w-10/12 mx-auto">
+    <div className="relative pt-28 lg:w-10/12 w-11/12 mx-auto">
       <img
         className="absolute -top-1 left-1/2 transform -translate-x-1/2"
         src={flower}
@@ -20,24 +20,24 @@ const HowItWorks = () => {
         heading="How It Works"
         subHeading="Your Path to Love Starts Here – Easy, Secure, and Trusted"
       ></SectionTitle>
-      <div className="mt-14 space-y-16 text-gray-700 font-fontBody">
+      <div className="lg:mt-14 mt-10 lg:space-y-16 space-y-10 text-gray-700 font-fontBody">
         {/* Register */}
         <div>
-          <div className="grid grid-cols-2  justify-center">
-            <div className="flex mr-20">
-              <div className=" ml-auto">
+          <div className="grid grid-cols-2 justify-center">
+            <div className="flex lg:mr-20 md:mr-10 mr-6">
+              <div className="ml-auto">
                 <Lottie className="" animationData={register}></Lottie>
               </div>
             </div>
-            <div className="border-l-2 border-maroon-color pl-12 flex flex-col gap-3 ">
+            <div className="border-l-2 border-maroon-color lg:pl-12 md:pl-8 pl-4 flex flex-col gap-3">
               <div className="flex gap-4">
-                <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full text-2xl font-semibold">
+                <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full lg:text-2xl md:text-xl  font-semibold">
                   1
                 </span>
-                <h3 className="font-fontHeading text-2xl">Register</h3>
+                <h3 className="font-fontHeading lg:text-2xl md:text-xl">Register</h3>
               </div>
 
-              <p>
+              <p className="text-justify lg:text-base md:text-base text-xs">
                 Join our community in just a few simple steps! Sign up with your
                 basic details and create a profile that reflects your
                 personality, preferences, and aspirations. Your journey to
@@ -49,17 +49,17 @@ const HowItWorks = () => {
         {/* premium member */}
         <div>
           <div className="grid grid-cols-2  justify-center">
-            <div className="border-r-2 border-maroon-color pr-12 flex gap-3">
+            <div className="border-r-2 border-maroon-color lg:pr-12 md:pr-8 pr-4 flex gap-3">
               <div className="mr-2 flex flex-col gap-3">
                 <div className="flex items-center gap-4">
-                  <h3 className="ml-auto font-fontHeading text-2xl">
+                  <h3 className="ml-auto font-fontHeading lg:text-2xl md:text-xl text-sm">
                     Become a Premium Member
                   </h3>
-                  <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full text-2xl font-semibold">
+                  <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full lg:text-2xl md:text-xl  font-semibold">
                     2
                   </span>
                 </div>
-                <p className="text-justify">
+                <p className="text-justify lg:text-base md:text-base text-xs">
                   Upgrade to a premium membership to access advanced features
                   like priority profile visibility, unlimited matches, and
                   personalized matchmaking services. Enjoy a seamless and
@@ -67,7 +67,7 @@ const HowItWorks = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center ml-16">
+            <div className="flex items-center lg:ml-16 md:ml-16 ml-10">
               <div className="w-1/2">
                 <Lottie className="" animationData={member}></Lottie>
               </div>
@@ -77,20 +77,20 @@ const HowItWorks = () => {
         {/* find your match */}
         <div>
           <div className="grid grid-cols-2  justify-center">
-            <div className="flex mr-20">
+            <div className="flex lg:mr-20 md:mr-10 mr-6">
               <div className="w-64 ml-auto">
                 <Lottie className="" animationData={find}></Lottie>
               </div>
             </div>
-            <div className="border-l-2 border-maroon-color pl-12 flex flex-col gap-3">
+            <div className="border-l-2 border-maroon-color lg:pl-12 md:pl-8 pl-4 flex flex-col gap-3">
               <div className="flex gap-4">
-                <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full text-2xl font-semibold">
+                <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full lg:text-2xl md:text-xl font-semibold">
                   3
                 </span>
-                <h3 className="font-fontHeading text-2xl">Find your match</h3>
+                <h3 className="font-fontHeading lg:text-2xl md:text-xl">Find your match</h3>
               </div>
 
-              <p>
+              <p className="text-justify lg:text-base md:text-base text-xs">
                 Use our advanced search filters to find profiles that align with
                 your preferences. Whether it’s based on location, interests, or
                 values, we help you connect with the right person.
@@ -101,25 +101,25 @@ const HowItWorks = () => {
         {/* get profile information */}
         <div>
           <div className="grid grid-cols-2  justify-center">
-            <div className="border-r-2 border-maroon-color pr-12 flex gap-3">
+            <div className="border-r-2 border-maroon-color lg:pr-12 md:pr-8 pr-4 flex gap-3">
               <div className="mr-2 flex flex-col gap-3">
                 <div className="flex items-center gap-4">
-                  <h3 className="ml-auto font-fontHeading text-2xl">
+                  <h3 className="ml-auto font-fontHeading lg:text-2xl md:text-xl text-sm">
                     Get Profile Information
                   </h3>
-                  <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full text-2xl font-semibold">
+                  <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full lg:text-2xl md:text-xl font-semibold">
                     4
                   </span>
                 </div>
 
-                <p className="text-justify">
+                <p className="text-justify lg:text-base md:text-base text-xs">
                   View profiles with detailed information about your potential
                   matches. From hobbies and lifestyle, get all the insights you
                   need to make an informed decision.
                 </p>
               </div>
             </div>
-            <div className="ml-16">
+            <div className="lg:ml-16 md:ml-16 ml-10">
               <div className="w-1/2">
                 <Lottie className="" animationData={profile}></Lottie>
               </div>
@@ -129,19 +129,19 @@ const HowItWorks = () => {
         {/* Start Meetups */}
         <div>
           <div className="grid grid-cols-2  justify-center">
-            <div className="flex mr-20">
+            <div className="flex lg:mr-20 md:mr-10 mr-6">
               <div className=" ml-auto">
                 <Lottie className="" animationData={meet}></Lottie>
               </div>
             </div>
-            <div className="border-l-2 border-maroon-color pl-12 flex flex-col gap-3">
+            <div className="border-l-2 border-maroon-color lg:pl-12 md:pl-8 pl-4 flex flex-col gap-3">
               <div className="flex gap-4">
-                <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full text-2xl font-semibold">
+                <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full lg:text-2xl md:text-xl font-semibold">
                   5
                 </span>
-                <h3 className="font-fontHeading text-2xl">Start Meetups</h3>
+                <h3 className="font-fontHeading lg:text-2xl md:text-xl">Start Meetups</h3>
               </div>
-              <p>
+              <p className="text-justify lg:text-base md:text-base text-xs">
                 Once you find a match, start meaningful conversations through
                 contact information. Plan meetups and take the first step
                 towards building a strong and lasting relationship.
@@ -152,25 +152,25 @@ const HowItWorks = () => {
         {/* Getting Married */}
         <div>
           <div className="grid grid-cols-2  justify-center">
-            <div className="border-r-2 border-maroon-color pr-12 flex gap-3">
+            <div className="border-r-2 border-maroon-color lg:pr-12 md:pr-8 pr-4 flex gap-3">
               <div className="mr-2 flex flex-col gap-3">
                 <div className="flex items-center gap-4">
-                  <h3 className="ml-auto font-fontHeading text-2xl">
+                  <h3 className="ml-auto font-fontHeading lg:text-2xl md:text-xl">
                     Getting Married
                   </h3>
-                  <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full text-2xl font-semibold">
+                  <span className="inline-flex text-gold-color border border-maroon-color px-2.5 rounded-full lg:text-2xl md:text-xl font-semibold">
                     6
                   </span>
                 </div>
 
-                <p className="text-justify">
+                <p className="text-justify lg:text-base md:text-base text-xs">
                   Found the one? Congratulations! Our platform is here to
                   support you as you take the next big step towards marriage.
                   Start your new life together with confidence and joy.
                 </p>
               </div>
             </div>
-            <div className="flex items-center ml-16">
+            <div className="flex items-center lg:ml-16 md:ml-16 ml-10">
               <div className="w-1/2">
                 <Lottie className="" animationData={married}></Lottie>
               </div>

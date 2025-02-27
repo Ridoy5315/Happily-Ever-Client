@@ -5,7 +5,7 @@ import Footer from "../componenets/shared/footer/footer";
 const MainLayout = () => {
   return (
     <div>
-      <section className="w-full py-2 fixed z-10 bg-white bg-opacity-75 left-0 right-0">
+      <section className="w-full lg:py-2 md:py-2 fixed z-10 bg-white bg-opacity-75 left-0 right-0">
         <Navbar></Navbar>
       </section>
 

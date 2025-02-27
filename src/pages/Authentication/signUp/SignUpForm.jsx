@@ -55,9 +55,9 @@ const SignUpForm = () => {
               Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "You’ve successfully registered! Get started now.",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
               });
             }
           })

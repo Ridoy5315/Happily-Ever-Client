@@ -22,7 +22,7 @@ const SuccessCounter = () => {
   });
 
   return (
-    <div className="w-10/12 mx-auto pt-44">
+    <div className="lg:w-10/12 w-11/12 mx-auto lg:pt-44 md:pt-28 pt-20">
       <SectionTitle
         heading="Building Families"
         subHeading="Discover the numbers behind our trusted matrimony platform"
@@ -31,12 +31,12 @@ const SuccessCounter = () => {
         onEnter={() => setCounter(true)}
         onExit={() => setCounter(false)}
       >
-        <div className="grid grid-cols-4 gap-20 mt-16 text-center font-fontBody">
-          <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
+        <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 lg:gap-20 md:gap-6 gap-3 lg:mt-16 md:mt-10 mt-6 text-center font-fontBody">
+          <div className="bg-[#f5e7e4] p-6 lg:space-y-3 space-y-2 border-b-8 border-maroon-color rounded-xl">
             <div className="flex justify-center">
-              <FaUsersViewfinder className="text-4xl text-[#b97267]"></FaUsersViewfinder>
+              <FaUsersViewfinder className="lg:text-4xl text-2xl text-[#b97267]"></FaUsersViewfinder>
             </div>
-            <h2 className="text-5xl text-maroon-color font-medium">
+            <h2 className="lg:text-5xl text-3xl text-maroon-color font-medium">
               {counter && (
                 <CountUp
                   start={0}
@@ -45,15 +45,15 @@ const SuccessCounter = () => {
                 ></CountUp>
               )}
             </h2>
-            <p className="text-[#b97267] font-semibold text-xl">
+            <p className="text-[#b97267] font-semibold lg:text-xl">
               Total Biodata
             </p>
           </div>
-          <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
+          <div className="bg-[#f5e7e4] p-6 lg:space-y-3 space-y-2 border-b-8 border-maroon-color rounded-xl">
             <div className="flex justify-center">
-              <SlUserFemale className="text-4xl text-[#b97267]"></SlUserFemale>
+              <SlUserFemale className="lg:text-4xl text-2xl text-[#b97267]"></SlUserFemale>
             </div>
-            <h2 className="text-5xl text-maroon-color font-medium">
+            <h2 className="lg:text-5xl text-3xl text-maroon-color font-medium">
               {counter && (
                 <CountUp
                   start={0}
@@ -62,15 +62,15 @@ const SuccessCounter = () => {
                 ></CountUp>
               )}
             </h2>
-            <p className="text-[#b97267] font-semibold text-xl">
+            <p className="text-[#b97267] font-semibold lg:text-xl text-sm">
               Total Female Biodata
             </p>
           </div>
-          <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
+          <div className="bg-[#f5e7e4] p-6 lg:space-y-3 space-y-2 border-b-8 border-maroon-color rounded-xl">
             <div className="flex justify-center">
-              <GrUserManager className="text-4xl text-[#b97267]"></GrUserManager>
+              <GrUserManager className="lg:text-4xl text-2xl text-[#b97267]"></GrUserManager>
             </div>
-            <h2 className="text-5xl text-maroon-color font-medium">
+            <h2 className="lg:text-5xl text-3xl text-maroon-color font-medium">
               {counter && (
                 <CountUp
                   start={0}
@@ -79,18 +79,18 @@ const SuccessCounter = () => {
                 ></CountUp>
               )}
             </h2>
-            <p className="text-[#b97267] font-semibold text-xl">
+            <p className="text-[#b97267] font-semibold lg:text-xl text-sm">
               Total Male Biodata
             </p>
           </div>
-          <div className="bg-[#f5e7e4] p-6 space-y-3 border-b-8 border-maroon-color rounded-xl">
+          <div className="bg-[#f5e7e4] p-6 lg:space-y-3 space-y-2 border-b-8 border-maroon-color rounded-xl">
             <div className="flex justify-center">
-              <GiLovers className="text-4xl text-[#b97267]"></GiLovers>
+              <GiLovers className="lg:text-4xl text-2xl text-[#b97267]"></GiLovers>
             </div>
-            <h2 className="text-5xl text-maroon-color font-medium">
-              {counter && <CountUp start={0} end={3} duration={2.75}></CountUp>}
+            <h2 className="lg:text-5xl text-3xl text-maroon-color font-medium">
+              {counter && <CountUp start={0} end={14} duration={2.75}></CountUp>}
             </h2>
-            <p className="text-[#b97267] font-semibold text-xl">
+            <p className="text-[#b97267] font-semibold lg:text-xl text-xs">
               Total Successful Marriages
             </p>
           </div>
