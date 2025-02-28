@@ -72,10 +72,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 w-10/12 mx-auto mt-12 mb-28 bg-white shadow-lg rounded-xl font-fontBody">
+    <div className="grid grid-cols-2 bg-white shadow-lg rounded-xl font-fontBody">
       <div className="bg-gold2-color px-16 py-12 space-y-10 rounded-l-xl">
         <div className="text-maroon-color font-fontHeading">
-          <h1 className="text-5xl mb-8">Now</h1>
+          <h1 className="text-4xl">Now</h1>
           <h1 className="text-6xl font-semibold leading-tight">
             One Step Away from Something Amazing.
           </h1>

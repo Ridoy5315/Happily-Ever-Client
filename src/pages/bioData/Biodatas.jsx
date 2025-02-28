@@ -35,8 +35,8 @@ const Biodatas = () => {
   // const premiumBiodatas = allBiodatas.filter(item => item.contactEmail === premiumBiodatas)
 
   return (
-    <div className="pt-32 mb-20 grid grid-cols-4 min-h-screen gap-6">
-      <div className="col-span-1 px-8">
+    <div className="lg:pt-20 pt-14 lg:mb-20 mb-8 lg:grid md:grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 min-h-screen lg:gap-6 md:gap-4">
+      <div className="col-span-1 lg:px-8 md:px-4 px-10 lg:pt-20 md:pt-14 pt-6 pb-4 bg-gold2-color shadow-[4px_0_12px_2px_rgba(55,65,81,0.150)]">
         <LeftSide
           setMinAge={setMinAge}
           setMaxAge={setMaxAge}
@@ -44,7 +44,7 @@ const Biodatas = () => {
           handleFieldChange={handleFieldChange} 
         ></LeftSide>
       </div>
-      <div className="col-span-3">
+      <div className="col-span-3 lg:pt-12 md::pt-8 pt-6">
         <RightSide
           allBiodatas={allBiodatas}
           premiumBiodatas={premiumBiodatas}

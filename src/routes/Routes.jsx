@@ -21,11 +21,13 @@ import GotMarried from "../pages/dashboard/gotMarried/GotMarried";
 import AboutUs from "../pages/aboutUs/AboutUs";
 import ContactUs from "../pages/contactUS/ContactUs";
 import DashboardRedirect from "../pages/dashboard/DashboardRedirect";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
