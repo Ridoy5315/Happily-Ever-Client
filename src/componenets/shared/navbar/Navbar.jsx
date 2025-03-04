@@ -115,7 +115,7 @@ const Navbar = () => {
           <div className="hidden lg:block md:block">
             {user ? (
               <div className="flex justify-center items-center lg:gap-4 md:gap-3">
-                <div className="md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full">
+                <div className="md:w-10 md:h-10 lg:w-14 lg:h-14 rounded-full">
                   <img
                     className="h-full w-full rounded-full"
                     src={user?.photoURL}

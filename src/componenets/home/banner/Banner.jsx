@@ -23,7 +23,7 @@ const Banner = () => {
     setZoomKey((prev) => prev + 1);
   }, [currentSlide]); // Run effect every slide change
   return (
-    <div className="w-full h-full z-10 font-fontHeading">
+    <div className="w-full h-full z-10 font-fontHeading overflow-hidden">
       <Swiper
         spaceBetween={30}
         enteredSlides={true}
@@ -40,9 +40,9 @@ const Banner = () => {
       >
         {/* slider 1 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center  min-h-[500px] h-auto">
-            <div className="relative">
-              <div className="absolute z-10 text-gray-300 lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20">
+          <div className="overflow-hidden w-full relative  lg:h-screen md:h-[700px] h-[450px]">
+   
+              <div className="absolute z-10 text-gray-300 px-16 md:px-52 lg:px-80 top-[35%] transform -translate-y-1/2">
                 <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
                   <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
@@ -59,20 +59,20 @@ const Banner = () => {
                 key={`slide-0-${zoomKey}`}
                 src={banner3}
                 alt=""
-                className="w-full lg:h-full md:h-full h-[500px] object-cover rounded-lg shadow-lg"
-                initial={{ scale: 1 }} // Start zoomed in
-                animate={{ scale: 1.5 }} // Animate to normal size
+                className="bsolute top-0 left-0 w-full h-full object-cover"
+                initial={{ scale: 1}} // Start zoomed in
+                animate={{ scale: 1.5}} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/65 to-black/45"></div>
-            </div>
+  
           </div>
         </SwiperSlide>
         {/* slider 2 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center min-h-[500px] h-auto">
-            <div className="relative">
-              <div className="absolute z-10  text-gray-300  lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20 ">
+          <div className="overflow-hidden w-full relative  lg:h-screen md:h-[700px] h-[450px]">
+   
+              <div className="absolute z-10 text-gray-300 px-16 md:px-52 lg:px-80 top-[35%] transform -translate-y-1/2">
                 <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
                   <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
@@ -84,24 +84,25 @@ const Banner = () => {
                   Your Happily Ever Awaits!
                 </h1>
               </div>
+
               <motion.img
-                key={`slide-1-${zoomKey}`}
+                key={`slide-0-${zoomKey}`}
                 src={banner1}
                 alt=""
-                className="w-full lg:h-full md:h-full h-[500px] object-cover"
-                initial={{ scale: 1, filter: "blur(0px)" }} // Start zoomed in
-                animate={{ scale: 1.5, filter: "blur(5px)" }} // Animate to normal size
+                className="bsolute top-0 left-0 w-full h-full object-cover"
+                initial={{ scale: 1}} // Start zoomed in
+                animate={{ scale: 1.5}} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/65 to-black/45"></div>
-            </div>
+  
           </div>
         </SwiperSlide>
         {/* slider 3 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center min-h-[500px] h-auto">
-            <div className="relative">
-              <div className="absolute z-10  text-gray-300  lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20">
+          <div className="overflow-hidden w-full relative  lg:h-screen md:h-[700px] h-[450px]">
+   
+              <div className="absolute z-10 text-gray-300 px-16 md:px-52 lg:px-80 top-[35%] transform -translate-y-1/2">
                 <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
                   <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
@@ -113,24 +114,25 @@ const Banner = () => {
                   Your Happily Ever Awaits!
                 </h1>
               </div>
+
               <motion.img
-                key={`slide-2-${zoomKey}`}
+                key={`slide-0-${zoomKey}`}
                 src={banner4}
                 alt=""
-                className="w-full lg:h-full md:h-full h-[500px] object-cover rounded-lg shadow-lg"
-                initial={{ scale: 1 }} // Start zoomed in
-                animate={{ scale: 1.5 }} // Animate to normal size
+                className="bsolute top-0 left-0 w-full h-full object-cover"
+                initial={{ scale: 1}} // Start zoomed in
+                animate={{ scale: 1.5}} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/65 to-black/45"></div>
-            </div>
+  
           </div>
         </SwiperSlide>
         {/* slider 4 */}
         <SwiperSlide>
-          <div className="overflow-hidden w-full relative bg-cover bg-center min-h-[500px] h-auto">
-            <div className="relative">
-              <div className="absolute z-10  text-gray-300 lg:px-80 md:px-52 px-16 lg:pt-44 md:pt-24 pt-20 ">
+          <div className="overflow-hidden w-full relative lg:h-screen md:h-[700px] h-[450px]">
+   
+              <div className="absolute z-10 text-gray-300 px-16 md:px-52 lg:px-80 top-[35%] transform -translate-y-1/2">
                 <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
                   Find your{" "}
                   <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
@@ -142,17 +144,18 @@ const Banner = () => {
                   Your Happily Ever Awaits!
                 </h1>
               </div>
+
               <motion.img
-                key={`slide-3-${zoomKey}`}
+                key={`slide-0-${zoomKey}`}
                 src={banner2}
                 alt=""
-                className="w-full lg:h-full md:h-full h-[500px] object-cover rounded-lg shadow-lg"
-                initial={{ scale: 1 }} // Start zoomed in
-                animate={{ scale: 1.5 }} // Animate to normal size
+                className="bsolute top-0 left-0 w-full h-full object-cover"
+                initial={{ scale: 1}} // Start zoomed in
+                animate={{ scale: 1.5}} // Animate to normal size
                 transition={{ duration: 11, ease: "easeInOut" }} // Smooth transition
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/65 to-black/45"></div>
-            </div>
+  
           </div>
         </SwiperSlide>
       </Swiper>
