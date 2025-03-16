@@ -107,11 +107,11 @@ const BiodataDetails = () => {
   };
 
   return (
-    <div className="mt-10 mb-28">
+    <div className=" mb-28">
       {/*  details  */}
       <div className="grid grid-cols-2 gap-10">
         {/* profile photo */}
-        <div className="sticky top-20 h-screen  w-full">
+        <div className="sticky lg:top-20  md:top-14 top-10 h-screen  w-full">
           <img
             src={profileImage}
             alt="profile image"
@@ -119,7 +119,7 @@ const BiodataDetails = () => {
           />
         </div>
         {/* Details information */}
-        <div className="mt-10 space-y-10 mr-16">
+        <div className="mt-32 space-y-10 mr-16">
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <p className="text-5xl font-fontHeading font-semibold text-maroon-color">

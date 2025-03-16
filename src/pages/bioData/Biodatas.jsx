@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LeftSide from "../../componenets/bioData/LeftSide";
 import RightSide from "../../componenets/bioData/RightSide";
 import useBiodatas from "../../hooks/useBiodatas";
 const Biodatas = () => {
+  const [biodata, setBiodata] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalBiodata, setTotalBiodata] = useState(0);
+  const [totalPremiumBiodata, setTotalPremiumBiodata] = useState(0);
+  const biodataPerPage = 6;
   const [minAge, setMinAge] = useState("");
   const [maxAge, setMaxAge] = useState("");
   const [filterData, setFilterData] = useState({
@@ -25,14 +30,21 @@ const Biodatas = () => {
     }));
   };
 
-  const [biodatas] = useBiodatas(minAge, maxAge, gender, divisionName);
-  console.log(biodatas);
+  const [biodatas] = useBiodatas(minAge, maxAge, gender, divisionName, currentPage);
+   
 
-  const allBiodatas = biodatas.allBiodatasResult;
+  useEffect(() => {
+    console.log(biodatas);
+    setBiodata(biodatas.allBiodatasResult);
+    setTotalBiodata(biodatas.totalBiodatas);
+    setTotalPremiumBiodata(biodatas.premiumBiodatasResult);
+  }, [biodatas, currentPage]);
 
-  const premiumBiodatas = biodatas?.premiumBiodatasResult;
+  const totalPages = Math.ceil(totalBiodata / biodataPerPage);
 
-  // const premiumBiodatas = allBiodatas.filter(item => item.contactEmail === premiumBiodatas)
+  // const allBiodatas = biodatas.allBiodatasResult;
+
+  // const premiumBiodatas = biodatas?.premiumBiodatasResult;
 
   return (
     <div className="lg:pt-20 pt-14 lg:mb-20 mb-8 lg:grid md:grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 min-h-screen lg:gap-6 md:gap-4">
@@ -41,13 +53,18 @@ const Biodatas = () => {
           setMinAge={setMinAge}
           setMaxAge={setMaxAge}
           filterData={filterData}
-          handleFieldChange={handleFieldChange} 
+          handleFieldChange={handleFieldChange}
         ></LeftSide>
       </div>
       <div className="col-span-3 lg:pt-12 md::pt-8 pt-6">
         <RightSide
-          allBiodatas={allBiodatas}
-          premiumBiodatas={premiumBiodatas}
+          biodata={biodata}
+          premiumBiodatas={totalPremiumBiodata} 
+          currentPage={currentPage} 
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages} 
+          biodataPerPage={biodataPerPage} 
+          totalBiodata={totalBiodata}
         ></RightSide>
       </div>
     </div>

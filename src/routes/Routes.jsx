@@ -22,6 +22,7 @@ import AboutUs from "../pages/aboutUs/AboutUs";
 import ContactUs from "../pages/contactUS/ContactUs";
 import DashboardRedirect from "../pages/dashboard/DashboardRedirect";
 import ErrorPage from "../pages/errorPage/ErrorPage";
+import Story from "../pages/dashboard/Admin/successStory/Story";
 
 export const router = createBrowserRouter([
   {
@@ -135,6 +136,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ApprovedContactRequest></ApprovedContactRequest>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/story",
+        element: (
+          <AdminRoute>
+            <Story></Story>
           </AdminRoute>
         ),
       },

@@ -1,18 +1,16 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import Footer from "../componenets/shared/footer/footer";
-import Navbar from "../componenets/shared/navbar/Navbar";
 
 import useAdmin from "../hooks/useAdmin";
 import { FaStreetView, FaUserEdit } from "react-icons/fa";
-import { MdFavoriteBorder, MdOutlineContactSupport } from "react-icons/md";
-import { FiLogOut } from "react-icons/fi";
+import { MdContactMail, MdDashboard, MdFavoriteBorder, MdOutlineContactSupport, MdOutlineWorkspacePremium } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { IoMdSkipBackward } from "react-icons/io";
-import { CiLogin, CiLogout } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
 import useAuth from "../hooks/useAuth";
 import logo from "../assets/website_logo2-removebg-preview.png";
-import { useEffect, useState } from "react";
 import { BiMaleFemale } from "react-icons/bi";
+import { FaUsersGear } from "react-icons/fa6";
+import { TbBrandStorytel } from "react-icons/tb";
 const Dashboard = () => {
   // const [activeMenu, setActiveMenu] = useState(null);
   const { user, logOut} = useAuth();
@@ -51,7 +49,7 @@ const Dashboard = () => {
 
             <div className="border-b py-3 flex items-center gap-3 text-xl font-semibold pl-6">
               <RxDashboard className="text-2xl"></RxDashboard>
-              <p>User Dashboard</p>
+              {isAdmin ? <p>Admin Dashboard</p> : <p>User Dashboard</p>}
             </div>
 
             <ul className="space-y-3 ml-3 mt-7">
@@ -60,35 +58,44 @@ const Dashboard = () => {
                   <li className="">
                     <NavLink
                       to="/dashboard/adminDashboard"
-                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <FaUserEdit className="text-2xl"></FaUserEdit>Dashboard
+                      <MdDashboard className="text-xl"></MdDashboard>Dashboard
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/manageUsers"
-                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <FaStreetView className="2xl"></FaStreetView>Manage Users
+                      <FaUsersGear className="text-xl"></FaUsersGear>Manage Users
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/approvedPremium"
-                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
                     >
-                      <MdOutlineContactSupport className="text-2xl"></MdOutlineContactSupport>
+                      <MdOutlineWorkspacePremium className="text-xl"></MdOutlineWorkspacePremium>
                       Approved Premium
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to="/dashboard/approvedContactRequest"
-                      className={({isActive}) => `flex items-center gap-4 text-xl ${isActive ? "bg-maroon-color text-white" : " "}`}
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-64"}`}
                     >
-                      <MdFavoriteBorder className="text-2xl"></MdFavoriteBorder>
+                      <MdContactMail className="text-xl"></MdContactMail>
                       Approved Contact Request
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/story"
+                      className={({ isActive }) =>`relative inline-flex items-center gap-4 text-lg px-4 py-1 rounded-lg transition duration-300 ease-in-out ${isActive ? "text-maroon-color font-medium hover:bg-maroon-color hover:text-white" : "text-gray-800 after:content-[''] after:absolute after:top-full after:left-3 after:h-[2px] after:w-0 after:bg-gray-700 after:transition-all after:duration-300 hover:after:w-full"}`}
+                    >
+                      <TbBrandStorytel className="text-xl"></TbBrandStorytel>
+                      Success Story
                     </NavLink>
                   </li>
                 </>

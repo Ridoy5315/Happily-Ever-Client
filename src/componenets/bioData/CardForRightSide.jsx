@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../home/premiumCards/PremiumCard.css";
 import { Link } from "react-router-dom";
 import { findUserAge } from "../../api/utils";
-const CardForRightSide = ({ biodata , premiumBiodatas}) => {
+const CardForRightSide = ({ data , premiumBiodatas}) => {
   // const [age, setAge] = useState(null);
   const {
     bioDataId,
@@ -13,13 +13,10 @@ const CardForRightSide = ({ biodata , premiumBiodatas}) => {
     occupation,
     contactEmail,
     age,
-  } = biodata || {};
+  } = data || {};
 
   const isPremium = premiumBiodatas.some(item => item.email === contactEmail);
 
-  // useEffect(() => {
-  //   setAge(findUserAge(dateOfBirth));
-  // }, []);
   return (
     <div className="rounded-xl relative">
       <div className="bg-gold-color lg:h-28 h-20"></div>

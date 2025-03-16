@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useBiodatas = (minAge, maxAge, gender, divisionName) => {
+const useBiodatas = (minAge, maxAge, gender, divisionName, currentPage) => {
   const axiosPublic = useAxiosPublic();
 
   const {
@@ -9,15 +9,14 @@ const useBiodatas = (minAge, maxAge, gender, divisionName) => {
     isPending: loading,
     refetch,
   } = useQuery({
-    queryKey: ["biodatas", minAge, maxAge, gender, divisionName],
+    queryKey: ["biodatas", minAge, maxAge, gender, divisionName, currentPage],
     queryFn: async () => {
       const { data } = await axiosPublic(
-        `/biodatas?min=${minAge}&max=${maxAge}&gender=${gender}&division=${divisionName}`
+        `/biodatas?page=${currentPage}&min=${minAge}&max=${maxAge}&gender=${gender}&division=${divisionName}`
       );
       return data;
     },
   });
-  console.log(biodatas);
   return [biodatas, loading, refetch];
 };
 

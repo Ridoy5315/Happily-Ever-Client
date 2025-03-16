@@ -35,7 +35,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className="w-10/12 mx-auto mt-10 grid grid-cols-3 gap-8">
+    <div className="w-10/12 mx-auto pt-36 grid grid-cols-3 gap-8">
       {/* checkout form */}
       <div className="col-span-2 bg-white py-8 px-10 space-y-7">
           {/* form */}

@@ -7,13 +7,16 @@ import { FaFemale, FaMale } from "react-icons/fa";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import useUsers from "../../../../hooks/useUsers";
 import LoadingSpinner from "../../../../componenets/shared/loadingSpinner/LoadingSpinner";
+import { Bar } from "react-chartjs-2";
+import { Chart, registerables  } from "chart.js";
+Chart.register(...registerables);
 const AdminDashboard = () => {
   const [counter, setCounter] = useState(false);
   const [data, loading] = useUsers();
   const total_Revenue = 5 * data?.totalRevenue;
 
-  if(loading){
-     return <LoadingSpinner></LoadingSpinner>
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>;
   }
   return (
     <div className="w-11/12 mx-auto py-10">
@@ -34,7 +37,11 @@ const AdminDashboard = () => {
 
               <h2 className="text-6xl text-maroon-color font-medium">
                 {counter && (
-                  <CountUp start={0} end={data?.totalUsers} duration={2.75}></CountUp>
+                  <CountUp
+                    start={0}
+                    end={data?.totalUsers}
+                    duration={2.75}
+                  ></CountUp>
                 )}
               </h2>
             </div>
@@ -53,7 +60,11 @@ const AdminDashboard = () => {
                 </p>
                 <h2 className="text-5xl text-center text-maroon-color font-medium">
                   {counter && (
-                    <CountUp start={0} end={data?.maleUsers} duration={2.75}></CountUp>
+                    <CountUp
+                      start={0}
+                      end={data?.maleUsers}
+                      duration={2.75}
+                    ></CountUp>
                   )}
                 </h2>
               </div>
@@ -66,7 +77,11 @@ const AdminDashboard = () => {
                 </p>
                 <h2 className="text-5xl text-center text-maroon-color font-medium">
                   {counter && (
-                    <CountUp start={0} end={data?.femaleUsers} duration={2.75}></CountUp>
+                    <CountUp
+                      start={0}
+                      end={data?.femaleUsers}
+                      duration={2.75}
+                    ></CountUp>
                   )}
                 </h2>
               </div>
@@ -87,7 +102,11 @@ const AdminDashboard = () => {
                     <h2 className="text-5xl text-center text-white font-medium bg-[#b97267] p-8 rounded-xl">
                       $
                       {counter && (
-                        <CountUp start={0} end={total_Revenue} duration={2.75}></CountUp>
+                        <CountUp
+                          start={0}
+                          end={total_Revenue}
+                          duration={2.75}
+                        ></CountUp>
                       )}
                     </h2>
                   </div>
@@ -108,7 +127,11 @@ const AdminDashboard = () => {
             <div className="flex items-center gap-1">
               <h2 className="text-5xl text-maroon-color font-medium">
                 {counter && (
-                  <CountUp start={0} end={data?.premiumUsers} duration={2.75}></CountUp>
+                  <CountUp
+                    start={0}
+                    end={data?.premiumUsers}
+                    duration={2.75}
+                  ></CountUp>
                 )}
               </h2>
               <div className="flex justify-center">
@@ -118,6 +141,21 @@ const AdminDashboard = () => {
           </div>
         </div>
       </ScrollTrigger>
+      <div className="">
+        <Bar data={{
+          labels: ["A", "B", "C", "D", "E", "F"],
+          datasets: [
+            {
+              label: "Revenue",
+              data: [200, 300, 400, 350, 320, 444],
+            },
+            {
+              label: "Loss",
+              data: [120, 328, 222],
+            },
+          ],
+        }}></Bar>
+      </div>
     </div>
   );
 };
