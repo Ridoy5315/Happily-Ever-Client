@@ -18,7 +18,19 @@ const RightSide = ({
   return (
     <div>
       <SectionTitle heading="Find Your Perfect Match"></SectionTitle>
-      <div className="lg:mt-10 mt-8 w-11/12 mx-auto grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
+      <div>
+        {biodata ? <div className="lg:mt-10 mt-8 w-11/12 mx-auto grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
+        {biodata.length > 0 && (
+          biodata.map((data, index) => (
+            <CardForRightSide
+              key={index}
+              data={data}
+              premiumBiodatas={premiumBiodatas}
+            ></CardForRightSide>
+          ))
+        )}
+        </div> : <div className="h-svh grid place-items-center"><LoadingSpinner></LoadingSpinner></div>}
+      {/* <div className="lg:mt-10 mt-8 w-11/12 mx-auto grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
         {biodata && biodata.length > 0 ? (
           biodata.map((data, index) => (
             <CardForRightSide
@@ -30,6 +42,7 @@ const RightSide = ({
         ) : (
           <LoadingSpinner></LoadingSpinner>
         )}
+      </div> */}
       </div>
       {/* Pagination Info */}
       <div className="w-11/12 mx-auto  flex justify-between items-center lg:mt-6 mt-4">

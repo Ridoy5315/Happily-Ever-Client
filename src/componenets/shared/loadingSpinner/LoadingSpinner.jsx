@@ -2,7 +2,7 @@ import { Hearts } from "react-loader-spinner";
 
 const LoadingSpinner = () => {
   return (
-    <div className="flex items-center justify-center gap-8 h-screen">
+    <div className="flex items-center justify-center gap-8 ">
       <Hearts
         height="80"
         width="80"

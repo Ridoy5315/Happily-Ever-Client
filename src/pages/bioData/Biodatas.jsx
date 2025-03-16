@@ -42,12 +42,8 @@ const Biodatas = () => {
 
   const totalPages = Math.ceil(totalBiodata / biodataPerPage);
 
-  // const allBiodatas = biodatas.allBiodatasResult;
-
-  // const premiumBiodatas = biodatas?.premiumBiodatasResult;
-
   return (
-    <div className="lg:pt-20 pt-14 lg:mb-20 mb-8 lg:grid md:grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 min-h-screen lg:gap-6 md:gap-4">
+    <div className="lg:pt-20 pt-14 lg:pb-20 pb-8 lg:grid md:grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 min-h-screen lg:gap-6 md:gap-4">
       <div className="col-span-1 lg:px-8 md:px-4 px-10 lg:pt-20 md:pt-14 pt-6 pb-4 bg-gold2-color shadow-[4px_0_12px_2px_rgba(55,65,81,0.150)]">
         <LeftSide
           setMinAge={setMinAge}
