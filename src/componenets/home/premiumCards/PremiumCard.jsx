@@ -12,7 +12,6 @@ const PremiumCard = ({ biodata }) => {
     profileImage,
     permanentDivisionName,
     occupation,
-    name,
     age,
   } = biodata || {};
 
