@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../shared/SectionTitle/SectionTitle";
 import CardForRightSide from "./CardForRightSide";
-
 import LoadingSpinner from "../shared/loadingSpinner/LoadingSpinner";
-
+import { Typewriter } from "react-simple-typewriter";
+import { motion } from "motion/react"
 const RightSide = ({
   biodata,
   premiumBiodatas,
@@ -13,42 +12,81 @@ const RightSide = ({
   biodataPerPage,
   totalBiodata,
 }) => {
+  const [startTyping, setStartTyping] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStartTyping(true);
+    }, 2500);
+
+    return () => clearTimeout(timer); // Cleanup timer on component unmount
+  }, []);
 
   return (
     <div>
-      <SectionTitle heading="Find Your Perfect Match"></SectionTitle>
+      <h3 className="text-center lg:text-5xl md:text-3xl text-2xl text-maroon-color font-semibold font-fontHeading">
+        <Typewriter words={["Find Your "]} loop={1} typeSpeed={70}></Typewriter>
+        {startTyping && (
+          <span>
+            <Typewriter
+              words={[
+                "Perfect Match",
+                "Heart’s Desire",
+                "Life Partner",
+                "Perfect Pair",
+              ]}
+              loop={false}
+              cursor
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            ></Typewriter>
+          </span>
+        )}
+      </h3>
       <div>
-        {biodata ? <div className="lg:mt-10 mt-8 w-11/12 mx-auto grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
-        {biodata.length > 0 && (
-          biodata.map((data, index) => (
-            <CardForRightSide
-              key={index}
-              data={data}
-              premiumBiodatas={premiumBiodatas}
-            ></CardForRightSide>
-          ))
-        )}
-        </div> : <div className="h-svh grid place-items-center"><LoadingSpinner></LoadingSpinner></div>}
-      {/* <div className="lg:mt-10 mt-8 w-11/12 mx-auto grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
-        {biodata && biodata.length > 0 ? (
-          biodata.map((data, index) => (
-            <CardForRightSide
-              key={index}
-              data={data}
-              premiumBiodatas={premiumBiodatas}
-            ></CardForRightSide>
-          ))
+        {biodata ? (
+          <div className="lg:mt-10 mt-8 w-11/12 mx-auto grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
+            {biodata.length > 0 &&
+              biodata.map((data, i) => (
+                <motion.dev
+                  key={data._id}
+                  initial={{
+                    opacity: 0,
+                    y: 60,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{ duration: 0.5, delay: (i % 3) * 0.2 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <CardForRightSide
+                    data={data}
+                    premiumBiodatas={premiumBiodatas}
+                  ></CardForRightSide>
+                </motion.dev>
+              ))}
+          </div>
         ) : (
-          <LoadingSpinner></LoadingSpinner>
+          <div className="h-svh grid place-items-center">
+            <LoadingSpinner></LoadingSpinner>
+          </div>
         )}
-      </div> */}
       </div>
       {/* Pagination Info */}
       <div className="w-11/12 mx-auto  flex justify-between items-center lg:mt-6 mt-4">
         <p className="">
-          <span className="font-semibold text-gray-700 text-lg">Showing :</span> <span className="bg-gold-color px-3 py-0.5 text-white rounded-lg">{(currentPage - 1) * biodataPerPage + 1}-
-          {Math.min(currentPage * biodataPerPage, totalBiodata)}</span> of{" "}
-          <span className="bg-maroon-color px-3 py-0.5 text-white rounded-lg">{totalBiodata}</span>
+          <span className="font-semibold text-gray-700 text-lg">Showing :</span>{" "}
+          <span className="bg-gold-color px-3 py-0.5 text-white rounded-lg">
+            {(currentPage - 1) * biodataPerPage + 1}-
+            {Math.min(currentPage * biodataPerPage, totalBiodata)}
+          </span>{" "}
+          of{" "}
+          <span className="bg-maroon-color px-3 py-0.5 text-white rounded-lg">
+            {totalBiodata}
+          </span>
         </p>
 
         {/* Pagination Buttons */}

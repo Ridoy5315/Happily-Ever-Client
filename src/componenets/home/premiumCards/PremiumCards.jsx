@@ -7,6 +7,22 @@ import LoadingSpinner from "../../shared/loadingSpinner/LoadingSpinner";
 import { motion } from "motion/react"
 const PremiumCards = () => {
   const [biodatas] = useBiodatas();
+  const [cardsPerRow, setCardsPerRow] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1020) {
+        setCardsPerRow(2); 
+      } else {
+        setCardsPerRow(3);
+      }
+    };
+
+    handleResize(); // set on load
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const premiumBiodatas = biodatas?.premiumBiodatasResult;
 
@@ -36,7 +52,7 @@ const PremiumCards = () => {
                 opacity: 1,
                 y: 0,
               }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.2 }}
+              transition={{ duration: 0.5, delay: Math.floor(i / cardsPerRow) * 0.4 }}
               viewport={{once: true, amount: 0.2}}
             >
               <PremiumCard biodata={biodata}></PremiumCard>
