@@ -17,7 +17,6 @@ const ApprovedContactRequest = () => {
       return data;
     },
   });
-  console.log(contact_request);
 
   if (loading) {
     return <LoadingSpinner></LoadingSpinner>;
@@ -37,7 +36,6 @@ const ApprovedContactRequest = () => {
         const { data } = await axiosSecure.patch(
           `/contact-request/${person?._id}`
         );
-        console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
           Swal.fire({

@@ -71,7 +71,6 @@ const EditBiodata = () => {
 
   const handleImageChange = async (e) => {
     const imageFile = e.target.files[0];
-    console.log(imageFile);
     if (imageFile) {
       setFormData((prevData) => ({
         ...prevData,
@@ -127,7 +126,6 @@ const EditBiodata = () => {
     } else {
       bioDataInfo.profileImage = user?.photoURL;
     }
-    console.log(bioDataInfo);
     
     const userData = {
       name: bioDataInfo.name,
@@ -138,7 +136,6 @@ const EditBiodata = () => {
     .then(async() => {
       try {
         const { data } = await axiosSecure.post("/bioData", bioDataInfo);
-        console.log(data);
         if(data.insertedId){
           const {data} = await axiosSecure.patch(`/userInfo/${user?.email}`, userData);
           if(data.modifiedCount > 0){
@@ -151,7 +148,7 @@ const EditBiodata = () => {
           }
         }
       } catch (err) {
-        console.log(err);
+        (err);
       }
     })
     

@@ -14,14 +14,12 @@ const SocialLogin = () => {
 
   const handleSignInWithGoogle = () => {
     googleSignIn().then((result) => {
-      console.log(result.user);
       const userInfo = {
         name: result.user?.displayName,
         email: result.user?.email,
         image: result.user?.photoURL,
       };
       axiosPublic.post("/user", userInfo).then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "top-end",

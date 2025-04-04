@@ -10,7 +10,6 @@ const PremiumCards = () => {
 
   const premiumBiodatas = biodatas?.premiumBiodatasResult;
 
-  console.log(premiumBiodatas);
 
   // const premiumBiodatas = biodatas.filter(item => item.status === 'premium')
 

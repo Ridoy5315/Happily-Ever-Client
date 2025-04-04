@@ -6,7 +6,6 @@ import { IoLocationOutline } from "react-icons/io5";
 const PremiumCard = ({ biodata }) => {
   // const [age, setAge] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
-  console.log(biodata);
   const {
     bioDataId,
     bioDataType,

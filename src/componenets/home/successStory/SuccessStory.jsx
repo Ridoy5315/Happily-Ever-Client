@@ -15,7 +15,6 @@ const SuccessStory = () => {
       return data;
     }
   })
-  console.log(success_couple);
   useEffect(() => {
     if (success_couple.length === 0) return;
     const slider = new Glide(".glide-08", {

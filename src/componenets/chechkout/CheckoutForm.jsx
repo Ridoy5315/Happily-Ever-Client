@@ -21,7 +21,7 @@ const CheckoutForm = ({ contactRequestInfo }) => {
 
       setClientSecret(data.clientSecret);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -54,9 +54,9 @@ const CheckoutForm = ({ contactRequestInfo }) => {
     });
 
     if (error) {
-      console.log("[error]", error);
+      // console.log("[error]", error);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      // console.log("[PaymentMethod]", paymentMethod);
     }
 
     //   confirm payment
@@ -87,7 +87,7 @@ const CheckoutForm = ({ contactRequestInfo }) => {
           });
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
   };

@@ -24,7 +24,6 @@ const ApprovedPremium = () => {
   }
 
   const handleRoleChange = (person, value) => {
-      console.log(value);
       Swal.fire({
         title: "Are you sure?",
         text: `Do you want to change ${person?.name}'s role?`,
@@ -39,7 +38,7 @@ const ApprovedPremium = () => {
             `/user/${person?.email}`,
             value
           );
-          console.log(data);
+ 
           if (data.modifiedCount > 0) {
             refetch();
             Swal.fire({

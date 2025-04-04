@@ -10,10 +10,8 @@ const GotMarried = () => {
   const [formData, setFormData] = useState({
     image: "",
   });
-  console.log(selectedDate)
   const handleImageChange = async (e) => {
     const imageFile = e.target.files[0];
-    console.log(imageFile);
     if (imageFile) {
       setFormData((prevData) => ({
         ...prevData,
@@ -53,7 +51,7 @@ const GotMarried = () => {
         });
       }
     } catch (err) {
-      console.log(err);
+      (err);
     }
   };
   return (

@@ -26,8 +26,6 @@ const BiodataDetails = () => {
   const [premium, setPremium] = useState(false);
   const [userPremium, setUserPremium] = useState(false);
 
-  console.log(premium, userPremium)
-
   const premiumBiodatas = biodatas?.premiumBiodatasResult;
 
   const {

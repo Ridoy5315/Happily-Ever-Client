@@ -11,7 +11,6 @@ const ManageUsers = () => {
   const [allUsers, loading, refetch] = useAllUsers(search);
 
   const handleRoleChange = (person, value) => {
-    console.log(value);
     Swal.fire({
       title: "Are you sure?",
       text: `Do you want to change ${person?.name}'s role?`,
@@ -26,7 +25,6 @@ const ManageUsers = () => {
           `/user/${person?.email}`,
           value
         );
-        console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
           Swal.fire({

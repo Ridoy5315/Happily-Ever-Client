@@ -34,7 +34,6 @@ const Biodatas = () => {
    
 
   useEffect(() => {
-    console.log(biodatas);
     setBiodata(biodatas.allBiodatasResult);
     setTotalBiodata(biodatas.totalBiodatas);
     setTotalPremiumBiodata(biodatas.premiumBiodatasResult);

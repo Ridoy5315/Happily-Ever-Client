@@ -13,7 +13,6 @@ const RightSide = ({
   biodataPerPage,
   totalBiodata,
 }) => {
-  console.log(biodata);
 
   return (
     <div>

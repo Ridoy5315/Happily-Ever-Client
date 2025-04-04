@@ -19,10 +19,7 @@ const SignUpForm = () => {
   const [agreed, setAgreed] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  // const [alertText, setAlertText] = useState('');
-  // if(!agreed){
-  //   return setAlertText('you have to agree')
-  // }
+  
   const {
     register,
     handleSubmit,
@@ -31,7 +28,6 @@ const SignUpForm = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     
     const imageFile = data.image[0] ;
     
@@ -46,7 +42,6 @@ const SignUpForm = () => {
       };
       createUser(data.email, data.password).then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         updateUserProfile(data.name, imageInfo.data.display_url).then(() => {
           //create user entry in the database
           axiosPublic.post("/user", userInfo)
@@ -65,7 +60,7 @@ const SignUpForm = () => {
           navigate('/');
         })
         .catch(error => {
-          console.log(error);
+          (error);
         })
       });
     }
