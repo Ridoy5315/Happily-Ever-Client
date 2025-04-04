@@ -13,21 +13,39 @@ import "swiper/css/effect-fade";
 import "react-medium-image-zoom/dist/styles.css";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import { Fade } from "react-awesome-reveal";
+import "animate.css";
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isFirstLoad, setIsFirstLoad] = useState(true); // Track initial load
-
-  // Store completed text
-  const [typedText, setTypedText] = useState("");
+  const [startTyping, setStartTyping] = useState(false);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [startTypingTagline, setStartTypingTagline] = useState(false);
 
   useEffect(() => {
-    // Disable fade animation after first render
     setTimeout(() => {
       setIsFirstLoad(false);
-    }, 1000); // Ensures fade animation only runs once
+    }, 2000);
   }, []);
+
+  useEffect(() => {
+    // Wait until the main text is fully animated, then show the tagline typewriter
+    if (!isFirstLoad) {
+      const timer = setTimeout(() => {
+        setStartTypingTagline(true);
+      }, 100); // Adjust timing to match your animation duration
+      return () => clearTimeout(timer);
+    }
+  }, [isFirstLoad]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStartTyping(true);
+    }, 2500);
+
+    return () => clearTimeout(timer); // Cleanup timer on component unmount
+  }, []);
+
+  
 
   const { data: banners = [] } = useQuery({
     queryKey: ["banner"],
@@ -59,50 +77,55 @@ const Banner = () => {
             <div className="overflow-hidden w-full relative  lg:h-screen md:h-[700px] h-[450px]">
               <div className="absolute z-10 text-gray-300 px-16 md:px-52 lg:px-80 top-[35%] transform -translate-y-1/2">
                 {isFirstLoad ? (
-                  <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
-                    <Typewriter
-                      words={["Find your "]}
-                      typeSpeed={80}
-                      onTypingDone={() => setTypedText("Find your")}
-                    ></Typewriter>
-                    {typedText.includes("Find your") && (
-                      <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
-                        <Typewriter
-                          words={[" soulmate and create memories"]}
-                          typeSpeed={80}
-                          onTypingDone={() =>
-                            setTypedText(
-                              (prev) => prev + " soulmate and create memories"
-                            )
-                          }
-                        ></Typewriter>
-                      </span>
-                    )}
-
-                    {typedText.includes("soulmate and create memories") && (
-                      <Typewriter
-                        words={[" for a lifetime"]}
-                        typeSpeed={80}
-                        onTypingDone={() =>
-                          setTypedText((prev) => prev + " for a lifetime")
-                        }
-                      ></Typewriter>
-                    )}
+                  <p className="animate__animated animate__slideInUp lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
+                    Find your
+                    <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
+                      soulmate and create memories
+                    </span>
+                    for a lifetime
                   </p>
                 ) : (
                   <p className="lg:text-5xl md:text-3xl text-lg text-center lg:leading-snug leading-normal font-medium">
-                    Find your{" "}
+                    Find your
                     <span className="text-gold-color lg:text-6xl md:text-4xl text-xl lg:mx-4 md:mx-2">
                       soulmate and create memories
-                    </span>{" "}
+                    </span>
                     for a lifetime
                   </p>
                 )}
 
-                <h1 className="text-center lg:mt-8 md:mt-6 mt-2 lg:text-3xl md:text-xl text-xs">
-                  Your Happily Ever Awaits!
-                </h1>
+                <div className="flex gap-2 overflow-hidden justify-center lg:mt-8 md:mt-6 mt-2 lg:text-3xl md:text-xl text-xs">
+                  {startTypingTagline && (
+                    <>
+                      <h1 className="">
+                        <Typewriter
+                          words={["Your"]}
+                          loop={1}
+                          typeSpeed={70}
+                        ></Typewriter>
+                      </h1>
+                      {startTyping && (
+                        <h1 className="text-gold-color">
+                          <Typewriter
+                            words={[
+                              "Happily Ever Awaits!",
+                              "Forever Begins Here!",
+                              "Perfect Match Awaits!",
+                              "Dream Chapter Begins!",
+                            ]}
+                            loop={false}
+                            cursor
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                          ></Typewriter>
+                        </h1>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
+
               <motion.img
                 key={`slide-${banner._id}-${currentSlide}`}
                 src={banner?.image}
